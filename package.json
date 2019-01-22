@@ -4,7 +4,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "format": "prettier --write *.js src/**/*.js --loglevel error",
+    "format:check": "prettier --check *.js src/**/*.js"
   },
   "dependencies": {
     "expo": "^32.0.0",
@@ -12,7 +14,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-preset-expo": "^5.0.0",
+    "prettier": "^1.16.0"
   },
   "private": true
 }
