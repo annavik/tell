@@ -1,3 +1,4 @@
+import { colors } from '../config/Colors'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { TellTextInput } from '../components/TellTextInput'
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 64,
   },
   label: {
-    color: '#FFFFFF',
+    color: colors.white,
     marginBottom: 8,
     fontSize: 12,
     fontWeight: '600',

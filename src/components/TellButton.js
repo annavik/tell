@@ -1,3 +1,4 @@
+import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
@@ -6,15 +7,15 @@ const styles = StyleSheet.create({
   button: {
     height: 44,
     borderRadius: 22,
-    backgroundColor: '#FC6E51',
-    borderColor: '#FFFFFF',
+    backgroundColor: colors.primary,
+    borderColor: colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: 32,
     paddingLeft: 32,
   },
   label: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontWeight: '600',
     fontSize: 14,
   },

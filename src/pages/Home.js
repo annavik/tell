@@ -1,3 +1,4 @@
+import { colors } from '../config/colors'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   top: {
-    backgroundColor: '#FC6E51',
+    backgroundColor: colors.primary,
     height: 120,
   },
   main: {
@@ -46,24 +47,24 @@ export class Home extends React.Component {
           <View style={styles.space} />
           <TellButton
             title="Bibliotek"
-            backgroundColor="#FFFFFF"
-            color="#434A54"
+            backgroundColor={colors.white}
+            color={colors.black}
             size="large"
             onPress={() => {}}
           />
           <View style={styles.space} />
           <TellButton
             title="Profil"
-            backgroundColor="#FFFFFF"
-            color="#434A54"
+            backgroundColor={colors.white}
+            color={colors.black}
             size="large"
             onPress={() => {}}
           />
           <View style={styles.space} />
           <TellButton
             title="Logga ut"
-            backgroundColor="#FFFFFF"
-            color="#434A54"
+            backgroundColor={colors.white}
+            color={colors.black}
             size="large"
             onPress={() => {}}
           />
