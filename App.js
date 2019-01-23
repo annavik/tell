@@ -1,8 +1,8 @@
-import { Login } from './src/pages/Login'
+import { Home } from './src/pages/Home'
 import React from 'react'
 
 export default class App extends React.Component {
   render() {
-    return <Login />
+    return <Home />
   }
 }

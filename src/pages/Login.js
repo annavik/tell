@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  top: {
+  main: {
     flexGrow: 1,
     padding: 32,
     justifyContent: 'center',
@@ -50,7 +50,7 @@ export class Login extends React.Component {
     return (
       <ImageBackground source={bg} style={styles.background}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.top}>
+        <View style={styles.main}>
           <KeyboardAvoidingView behavior="position">
             <View style={styles.mainContent}>
               <Image source={logo} style={styles.logo} />
@@ -64,7 +64,6 @@ export class Login extends React.Component {
           <Text style={styles.label}>Ny användare?</Text>
           <TellButton
             title="Registrera dig gratis"
-            size="small"
             theme="border"
             onPress={() => {}}
           />
