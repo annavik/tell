@@ -1,4 +1,5 @@
 import React from 'react'
+import { TellButton } from '../components/TellButton'
 import { TellTextInput } from '../components/TellTextInput'
 import {
   Image,
@@ -46,6 +47,7 @@ export class Login extends React.Component {
             <Image source={logo} style={styles.logo} />
             <TellTextInput placeholder="E-post" />
             <TellTextInput placeholder="Lösenord" />
+            <TellButton title="Logga in" size="large" onPress={() => {}} />
           </KeyboardAvoidingView>
         </View>
       </ImageBackground>
