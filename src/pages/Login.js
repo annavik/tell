@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   StatusBar,
   StyleSheet,
+  Text,
   View,
 } from 'react-native'
 
@@ -18,18 +19,29 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  container: {
-    width: '100%',
-    height: '100%',
+  top: {
+    flexGrow: 1,
     padding: 32,
     justifyContent: 'center',
   },
-  content: {
+  bottom: {
+    padding: 32,
+    alignItems: 'center',
+  },
+  mainContent: {
     width: '100%',
     alignItems: 'center',
+    paddingTop: 16,
+    paddingBottom: 16,
   },
   logo: {
     marginBottom: 64,
+  },
+  label: {
+    color: '#FFFFFF',
+    marginBottom: 8,
+    fontSize: 12,
+    fontWeight: '600',
   },
 })
 
@@ -38,17 +50,24 @@ export class Login extends React.Component {
     return (
       <ImageBackground source={bg} style={styles.background}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.container}>
-          <KeyboardAvoidingView
-            style={styles.content}
-            behavior="position"
-            contentContainerStyle={styles.content}
-          >
-            <Image source={logo} style={styles.logo} />
-            <TellTextInput placeholder="E-post" />
-            <TellTextInput placeholder="Lösenord" />
-            <TellButton title="Logga in" size="large" onPress={() => {}} />
+        <View style={styles.top}>
+          <KeyboardAvoidingView behavior="position">
+            <View style={styles.mainContent}>
+              <Image source={logo} style={styles.logo} />
+              <TellTextInput placeholder="E-post" />
+              <TellTextInput placeholder="Lösenord" />
+              <TellButton title="Logga in" size="large" onPress={() => {}} />
+            </View>
           </KeyboardAvoidingView>
+        </View>
+        <View style={styles.bottom}>
+          <Text style={styles.label}>Ny användare?</Text>
+          <TellButton
+            title="Registrera dig gratis"
+            size="small"
+            theme="border"
+            onPress={() => {}}
+          />
         </View>
       </ImageBackground>
     )
