@@ -1,6 +1,7 @@
 import { colors } from '../config/colors'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
+import { UserInfo } from '../components/UserInfo'
 import {
   Image,
   ImageBackground,
@@ -20,7 +21,6 @@ const styles = StyleSheet.create({
   },
   top: {
     backgroundColor: colors.primary,
-    height: 120,
   },
   main: {
     flexGrow: 1,
@@ -41,7 +41,9 @@ export class Home extends React.Component {
     return (
       <ImageBackground source={bg} style={styles.background}>
         <StatusBar barStyle="light-content" />
-        <SafeAreaView style={styles.top} />
+        <SafeAreaView style={styles.top}>
+          <UserInfo />
+        </SafeAreaView>
         <View style={styles.main}>
           <TellButton title="Mina böcker" size="large" onPress={() => {}} />
           <View style={styles.space} />

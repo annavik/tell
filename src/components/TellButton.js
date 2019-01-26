@@ -1,6 +1,7 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { typography } from '../config/typography'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -15,9 +16,8 @@ const styles = StyleSheet.create({
     paddingLeft: 32,
   },
   label: {
+    ...typography.labelMedium,
     color: colors.white,
-    fontWeight: '600',
-    fontSize: 14,
   },
 })
 
@@ -101,7 +101,7 @@ export class TellButton extends React.Component {
       <TouchableOpacity
         style={buttonStyles}
         onPress={onPress}
-        activeOpacity={0.7}
+        activeOpacity={0.8}
       >
         <Text style={labelStyles}>{title}</Text>
       </TouchableOpacity>

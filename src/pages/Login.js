@@ -1,7 +1,8 @@
-import { colors } from '../config/Colors'
+import { colors } from '../config/colors'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { TellTextInput } from '../components/TellTextInput'
+import { typography } from '../config/typography'
 import {
   Image,
   ImageBackground,
@@ -39,10 +40,9 @@ const styles = StyleSheet.create({
     marginBottom: 64,
   },
   label: {
+    ...typography.labelSmall,
     color: colors.white,
     marginBottom: 8,
-    fontSize: 12,
-    fontWeight: '600',
   },
 })
 
