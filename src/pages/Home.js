@@ -5,7 +5,6 @@ import { UserInfo } from '../components/UserInfo'
 import {
   Image,
   ImageBackground,
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   View,
@@ -19,9 +18,7 @@ export class Home extends React.Component {
     return (
       <ImageBackground source={bg} style={styles.background}>
         <StatusBar barStyle="light-content" />
-        <SafeAreaView style={styles.top}>
-          <UserInfo />
-        </SafeAreaView>
+        <UserInfo />
         <View style={styles.main}>
           <TellButton title="Mina böcker" size="large" onPress={() => {}} />
           <View style={styles.space} />

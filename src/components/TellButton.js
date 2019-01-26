@@ -15,9 +15,47 @@ export class TellButton extends React.Component {
   }
 
   getButtonStyles() {
-    const { backgroundColor, color, size, theme } = this.props
+    const { backgroundColor, color, theme, size } = this.props
 
     var buttonStyles = styles.button
+
+    switch (theme) {
+      case 'border':
+        buttonStyles = {
+          ...buttonStyles,
+          ...styles.buttonBorder,
+        }
+        break
+      case 'solid':
+      default:
+        buttonStyles = {
+          ...buttonStyles,
+          ...styles.buttonSolid,
+        }
+        break
+    }
+
+    switch (size) {
+      case 'medium':
+        buttonStyles = {
+          ...buttonStyles,
+          ...styles.buttonMedium,
+        }
+        break
+      case 'large':
+        buttonStyles = {
+          ...buttonStyles,
+          ...styles.buttonLarge,
+        }
+        break
+      case 'small':
+      default:
+        buttonStyles = {
+          ...buttonStyles,
+          ...styles.buttonSmall,
+        }
+        break
+    }
 
     if (backgroundColor) {
       buttonStyles = { ...buttonStyles, backgroundColor }
@@ -27,66 +65,25 @@ export class TellButton extends React.Component {
       buttonStyles = { ...buttonStyles, borderColor: color }
     }
 
-    switch (theme) {
-      case 'solid':
-        break
-      case 'border':
-        buttonStyles = {
-          ...buttonStyles,
-          backgroundColor: 'transparent',
-          borderWidth: 1,
-        }
-        break
-    }
-
-    switch (size) {
-      case 'small':
-        break
-      case 'medium':
-        buttonStyles = {
-          ...buttonStyles,
-          width: '100%',
-          height: 44,
-          borderRadius: 4,
-        }
-        break
-      case 'large':
-        buttonStyles = {
-          ...buttonStyles,
-          width: '100%',
-          height: 52,
-          borderRadius: 4,
-        }
-        break
-    }
-
     return buttonStyles
   }
 
   getLabelStyles() {
     const { color } = this.props
 
-    var labelStyles = styles.label
-
-    if (color) {
-      labelStyles = { ...labelStyles, color }
-    }
-
-    return labelStyles
+    return color ? { ...styles.label, color } : styles.label
   }
 
   render() {
     const { title, onPress } = this.props
-    let buttonStyles = this.getButtonStyles()
-    let labelStyles = this.getLabelStyles()
 
     return (
       <TouchableOpacity
-        style={buttonStyles}
+        style={this.getButtonStyles()}
         onPress={onPress}
         activeOpacity={0.8}
       >
-        <Text style={labelStyles}>{title}</Text>
+        <Text style={this.getLabelStyles()}>{title}</Text>
       </TouchableOpacity>
     )
   }
@@ -94,14 +91,31 @@ export class TellButton extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.primary,
-    borderColor: colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: 32,
     paddingLeft: 32,
+  },
+  buttonSolid: {
+    backgroundColor: colors.primary,
+  },
+  buttonBorder: {
+    borderColor: colors.white,
+    borderWidth: 1,
+  },
+  buttonSmall: {
+    height: 44,
+    borderRadius: 22,
+  },
+  buttonMedium: {
+    width: '100%',
+    height: 44,
+    borderRadius: 4,
+  },
+  buttonLarge: {
+    width: '100%',
+    height: 52,
+    borderRadius: 4,
   },
   label: {
     ...typography.labelMedium,

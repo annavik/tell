@@ -1,15 +1,17 @@
 import { colors } from '../config/colors'
 import React from 'react'
 import { typography } from '../config/typography'
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
 export class UserInfo extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.stats}>
-          <Text style={styles.statsNumber}>0</Text>
-          <Text style={styles.statsLabel}>Böcker</Text>
+          <View style={styles.statsContent}>
+            <Text style={styles.statsNumber}>0</Text>
+            <Text style={styles.statsLabel}>Böcker</Text>
+          </View>
         </View>
         <View style={styles.userInfo}>
           <View style={styles.placeholder}>
@@ -18,10 +20,12 @@ export class UserInfo extends React.Component {
           <Text style={styles.name}>Anna V.</Text>
         </View>
         <View style={styles.stats}>
-          <Text style={styles.statsNumber}>0</Text>
-          <Text style={styles.statsLabel}>Favoriter</Text>
+          <View style={styles.statsContent}>
+            <Text style={styles.statsNumber}>0</Text>
+            <Text style={styles.statsLabel}>Favoriter</Text>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     )
   }
 }
@@ -30,9 +34,15 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor: colors.primary,
+    width: '100%',
   },
   stats: {
     flexGrow: 1,
+    alignItems: 'center',
+  },
+  statsContent: {
+    width: 64,
     alignItems: 'center',
   },
   statsNumber: {

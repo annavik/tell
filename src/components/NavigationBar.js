@@ -10,10 +10,12 @@ export class NavigationBar extends React.Component {
   }
 
   render() {
+    const { title } = this.props
+
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.content}>
-          <Text style={styles.title}>{this.props.title}</Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
       </SafeAreaView>
     )
