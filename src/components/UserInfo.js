@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statsNumber: {
-    ...typography.labelLarge,
+    ...typography.labelHuge,
     color: colors.white,
     marginBottom: 8,
   },
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   placeholderLetter: {
-    ...typography.labelLarge,
+    ...typography.labelHuge,
     color: colors.primary,
   },
   name: {

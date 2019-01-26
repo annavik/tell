@@ -1,12 +1,12 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { StyleSheet, TextInput } from 'react-native'
+import { typography } from '../config/typography'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 const styles = StyleSheet.create({
   textInput: {
     width: '100%',
-    height: 52,
     backgroundColor: colors.white,
     color: colors.black,
     borderRadius: 4,
@@ -14,16 +14,58 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     marginBottom: 16,
   },
+  textInputPlain: {
+    height: 52,
+  },
+  textInputBorder: {
+    height: 44,
+    borderWidth: 1,
+    borderColor: colors.accentLight,
+  },
+  inputContainer: {
+    marginBottom: 8,
+  },
+  label: {
+    ...typography.labelSmall,
+    marginBottom: 8,
+  },
 })
 
 export class TellTextInput extends React.Component {
   static propTypes = {
+    label: PropTypes.string,
     placeholder: PropTypes.string,
+    theme: PropTypes.string,
   }
 
   render() {
-    const { placeholder } = this.props
+    const { label, placeholder, theme } = this.props
 
-    return <TextInput style={styles.textInput} placeholder={placeholder} />
+    let inputStyles
+
+    switch (theme) {
+      case 'border':
+        inputStyles = {
+          ...styles.textInput,
+          ...styles.textInputBorder,
+        }
+        break
+      case 'plain':
+      default:
+        inputStyles = {
+          ...styles.textInput,
+          ...styles.textInputPlain,
+        }
+        break
+    }
+
+    return label ? (
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>{label}</Text>
+        <TextInput style={inputStyles} placeholder={placeholder} />
+      </View>
+    ) : (
+      <TextInput style={inputStyles} placeholder={placeholder} />
+    )
   }
 }
