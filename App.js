@@ -1,8 +1,8 @@
-import { CreateAccount } from './src/pages/CreateAccount'
+import { MyBooks } from './src/pages/MyBooks'
 import React from 'react'
 
 export default class App extends React.Component {
   render() {
-    return <CreateAccount />
+    return <MyBooks />
   }
 }

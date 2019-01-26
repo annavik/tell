@@ -5,12 +5,12 @@ export const typography = StyleSheet.create({
   labelSmall: {
     color: colors.black,
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   labelMedium: {
     color: colors.black,
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   labelLarge: {
     color: colors.black,
