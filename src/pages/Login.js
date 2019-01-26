@@ -16,6 +16,34 @@ import {
 const bg = require('../../assets/images/bg_login.jpg')
 const logo = require('../../assets/images/logo.png')
 
+export class Login extends React.Component {
+  render() {
+    return (
+      <ImageBackground source={bg} style={styles.background}>
+        <StatusBar barStyle="light-content" />
+        <View style={styles.main}>
+          <KeyboardAvoidingView behavior="position">
+            <View style={styles.mainContent}>
+              <Image source={logo} style={styles.logo} />
+              <TellTextInput placeholder="E-post" />
+              <TellTextInput placeholder="Lösenord" />
+              <TellButton title="Logga in" size="large" onPress={() => {}} />
+            </View>
+          </KeyboardAvoidingView>
+        </View>
+        <View style={styles.bottom}>
+          <Text style={styles.label}>Ny användare?</Text>
+          <TellButton
+            title="Registrera dig gratis"
+            theme="border"
+            onPress={() => {}}
+          />
+        </View>
+      </ImageBackground>
+    )
+  }
+}
+
 const styles = StyleSheet.create({
   background: {
     width: '100%',
@@ -45,31 +73,3 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 })
-
-export class Login extends React.Component {
-  render() {
-    return (
-      <ImageBackground source={bg} style={styles.background}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.main}>
-          <KeyboardAvoidingView behavior="position">
-            <View style={styles.mainContent}>
-              <Image source={logo} style={styles.logo} />
-              <TellTextInput placeholder="E-post" />
-              <TellTextInput placeholder="Lösenord" />
-              <TellButton title="Logga in" size="large" onPress={() => {}} />
-            </View>
-          </KeyboardAvoidingView>
-        </View>
-        <View style={styles.bottom}>
-          <Text style={styles.label}>Ny användare?</Text>
-          <TellButton
-            title="Registrera dig gratis"
-            theme="border"
-            onPress={() => {}}
-          />
-        </View>
-      </ImageBackground>
-    )
-  }
-}

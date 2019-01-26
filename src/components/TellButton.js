@@ -4,23 +4,6 @@ import React from 'react'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-const styles = StyleSheet.create({
-  button: {
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.primary,
-    borderColor: colors.white,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingRight: 32,
-    paddingLeft: 32,
-  },
-  label: {
-    ...typography.labelMedium,
-    color: colors.white,
-  },
-})
-
 export class TellButton extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -108,3 +91,20 @@ export class TellButton extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  button: {
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: colors.primary,
+    borderColor: colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 32,
+    paddingLeft: 32,
+  },
+  label: {
+    ...typography.labelMedium,
+    color: colors.white,
+  },
+})

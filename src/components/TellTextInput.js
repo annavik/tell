@@ -4,33 +4,6 @@ import React from 'react'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 
-const styles = StyleSheet.create({
-  textInput: {
-    width: '100%',
-    backgroundColor: colors.white,
-    color: colors.black,
-    borderRadius: 4,
-    paddingRight: 16,
-    paddingLeft: 16,
-    marginBottom: 16,
-  },
-  textInputPlain: {
-    height: 52,
-  },
-  textInputBorder: {
-    height: 44,
-    borderWidth: 1,
-    borderColor: colors.accentLight,
-  },
-  inputContainer: {
-    marginBottom: 8,
-  },
-  label: {
-    ...typography.labelSmall,
-    marginBottom: 8,
-  },
-})
-
 export class TellTextInput extends React.Component {
   static propTypes = {
     label: PropTypes.string,
@@ -69,3 +42,30 @@ export class TellTextInput extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  textInput: {
+    width: '100%',
+    backgroundColor: colors.white,
+    color: colors.black,
+    borderRadius: 4,
+    paddingRight: 16,
+    paddingLeft: 16,
+    marginBottom: 16,
+  },
+  textInputPlain: {
+    height: 52,
+  },
+  textInputBorder: {
+    height: 44,
+    borderWidth: 1,
+    borderColor: colors.accentLight,
+  },
+  inputContainer: {
+    marginBottom: 8,
+  },
+  label: {
+    ...typography.labelSmall,
+    marginBottom: 8,
+  },
+})

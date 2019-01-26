@@ -3,6 +3,29 @@ import React from 'react'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
+export class UserInfo extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.stats}>
+          <Text style={styles.statsNumber}>0</Text>
+          <Text style={styles.statsLabel}>Böcker</Text>
+        </View>
+        <View style={styles.userInfo}>
+          <View style={styles.placeholder}>
+            <Text style={styles.placeholderLetter}>A</Text>
+          </View>
+          <Text style={styles.name}>Anna V.</Text>
+        </View>
+        <View style={styles.stats}>
+          <Text style={styles.statsNumber}>0</Text>
+          <Text style={styles.statsLabel}>Favoriter</Text>
+        </View>
+      </View>
+    )
+  }
+}
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -43,26 +66,3 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
 })
-
-export class UserInfo extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.stats}>
-          <Text style={styles.statsNumber}>0</Text>
-          <Text style={styles.statsLabel}>Böcker</Text>
-        </View>
-        <View style={styles.userInfo}>
-          <View style={styles.placeholder}>
-            <Text style={styles.placeholderLetter}>A</Text>
-          </View>
-          <Text style={styles.name}>Anna V.</Text>
-        </View>
-        <View style={styles.stats}>
-          <Text style={styles.statsNumber}>0</Text>
-          <Text style={styles.statsLabel}>Favoriter</Text>
-        </View>
-      </View>
-    )
-  }
-}
