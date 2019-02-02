@@ -1,6 +1,8 @@
 import { colors } from '../config/colors'
 import React from 'react'
+import { Section } from '../components/Section'
 import { TellButton } from '../components/TellButton'
+import { TellTextInput } from '../components/TellTextInput'
 import { ScrollView, StyleSheet, View } from 'react-native'
 
 export class EditBook extends React.Component {
@@ -20,7 +22,14 @@ export class EditBook extends React.Component {
             <TellButton title="Spara" theme="border" onPress={() => {}} />
           </View>
         </View>
-        <ScrollView />
+        <ScrollView>
+          <Section title="Framsida">
+            <TellTextInput theme="border" label="Titel" />
+            <TellTextInput theme="border" label="Författare" />
+          </Section>
+          <Section title="Sidor" backgroundColor={colors.accentUltraLight} />
+          <Section title="Inställningar" />
+        </ScrollView>
       </View>
     )
   }
