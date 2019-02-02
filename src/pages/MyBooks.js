@@ -1,16 +1,17 @@
 import { colors } from '../config/colors'
-import { NavigationBar } from '../components/NavigationBar'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { typography } from '../config/typography'
-import { StatusBar, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 export class MyBooks extends React.Component {
+  static navigationOptions = {
+    title: 'Mina böcker',
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <NavigationBar title="Mina böcker" />
         <View style={styles.top}>
           <View style={styles.buttonContainer}>
             <TellButton

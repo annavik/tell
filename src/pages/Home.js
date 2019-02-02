@@ -1,26 +1,33 @@
 import { colors } from '../config/colors'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { UserInfo } from '../components/UserInfo'
-import {
-  Image,
-  ImageBackground,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native'
+import { Image, ImageBackground, StyleSheet, View } from 'react-native'
 
 const bg = require('../../assets/images/bg_home.jpg')
 const logo = require('../../assets/images/logo_small.png')
 
 export class Home extends React.Component {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
+  static navigationOptions = {
+    title: 'Hem',
+    header: null,
+  }
+
   render() {
     return (
       <ImageBackground source={bg} style={styles.background}>
-        <StatusBar barStyle="light-content" />
         <UserInfo />
         <View style={styles.main}>
-          <TellButton title="Mina böcker" size="large" onPress={() => {}} />
+          <TellButton
+            title="Mina böcker"
+            size="large"
+            onPress={() => this.props.navigation.navigate('MyBooks')}
+          />
           <View style={styles.space} />
           <TellButton
             title="Bibliotek"
@@ -43,7 +50,7 @@ export class Home extends React.Component {
             backgroundColor={colors.white}
             color={colors.black}
             size="large"
-            onPress={() => {}}
+            onPress={() => this.props.navigation.goBack()}
           />
         </View>
         <View style={styles.bottom}>

@@ -1,15 +1,16 @@
-import { NavigationBar } from '../components/NavigationBar'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { TellTextInput } from '../components/TellTextInput'
-import { StatusBar, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 export class CreateAccount extends React.Component {
+  static navigationOptions = {
+    title: 'Skapa konto',
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <NavigationBar title="Skapa konto" />
         <View style={styles.content}>
           <View style={styles.inputFields}>
             <TellTextInput theme="border" label="E-post" />
