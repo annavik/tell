@@ -1,10 +1,15 @@
 import { colors } from '../config/colors'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
 export class MyBooks extends React.Component {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
   static navigationOptions = {
     title: 'Mina böcker',
   }
@@ -22,14 +27,21 @@ export class MyBooks extends React.Component {
           </View>
           <View style={styles.space} />
           <View style={styles.buttonContainer}>
-            <TellButton title="Ny bok" theme="border" onPress={() => {}} />
+            <TellButton
+              title="Ny bok"
+              theme="border"
+              onPress={() => this.props.navigation.navigate('EditBook')}
+            />
           </View>
         </View>
         <View style={styles.placeholderContent}>
           <Text style={styles.placeholderLabel}>
             Det finns inga böcker att visa.
           </Text>
-          <TellButton title="Skapa din första bok!" onPress={() => {}} />
+          <TellButton
+            title="Skapa din första bok!"
+            onPress={() => this.props.navigation.navigate('EditBook')}
+          />
         </View>
       </View>
     )

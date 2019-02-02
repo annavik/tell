@@ -1,5 +1,6 @@
 import { colors } from './src/config/colors'
 import { CreateAccount } from './src/pages/CreateAccount'
+import { EditBook } from './src/pages/EditBook'
 import { Home } from './src/pages/Home'
 import { Login } from './src/pages/Login'
 import { MyBooks } from './src/pages/MyBooks'
@@ -14,9 +15,10 @@ const AppNavigator = createStackNavigator(
     CreateAccount: { screen: CreateAccount },
     Home: { screen: Home },
     MyBooks: { screen: MyBooks },
+    EditBook: { screen: EditBook },
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'MyBooks',
     cardStyle: { backgroundColor: colors.white },
     defaultNavigationOptions: {
       headerStyle: {
