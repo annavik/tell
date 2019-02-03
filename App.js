@@ -18,7 +18,7 @@ const AppNavigator = createStackNavigator(
     EditBook: { screen: EditBook },
   },
   {
-    initialRouteName: 'MyBooks',
+    initialRouteName: 'Home',
     cardStyle: { backgroundColor: colors.white },
     defaultNavigationOptions: {
       headerStyle: {

@@ -1,4 +1,6 @@
+import { BookPage } from '../components/BookPage'
 import { colors } from '../config/colors'
+import { NewPage } from '../components/NewPage'
 import { PageListView } from '../components/PageListView'
 import React from 'react'
 import { Section } from '../components/Section'
@@ -7,14 +9,29 @@ import { TellTextInput } from '../components/TellTextInput'
 import { typography } from '../config/typography'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
+let pages = [
+  { key: 'page-0', content: <BookPage pageNumber={1} /> },
+  { key: 'page-1', content: <BookPage pageNumber={2} /> },
+  { key: 'page-2', content: <BookPage pageNumber={3} /> },
+]
+let newBook = { key: 'new-book', content: <NewPage /> }
+
 export class EditBook extends React.Component {
   static navigationOptions = {
     title: 'Ny bok',
   }
 
-  render() {
-    let pages = [{ key: 'page-0' }, { key: 'page-1' }, { key: 'page-2' }]
+  getPageLabelText() {
+    if (pages.length > 0) {
+      return `Din bok innehåller ${pages.length} ${
+        pages.length > 1 ? 'sidor' : 'sida'
+      }.`
+    }
 
+    return 'Din bok innehåller inga sidor än.'
+  }
+
+  render() {
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -34,10 +51,8 @@ export class EditBook extends React.Component {
             </View>
           </Section>
           <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
-            <PageListView pages={pages} />
-            <Text style={styles.pageLabel}>
-              Din bok innehåller inga sidor än.
-            </Text>
+            <PageListView pages={[...pages, newBook]} />
+            <Text style={styles.pageLabel}>{this.getPageLabelText()}</Text>
           </Section>
         </ScrollView>
       </View>
