@@ -20,7 +20,7 @@ export class Section extends React.Component {
         <View style={styles.titleContainer}>
           <Text style={typography.labelHuge}>{title}</Text>
         </View>
-        <View style={styles.content}>{children}</View>
+        <View>{children}</View>
       </View>
     )
   }
@@ -29,11 +29,5 @@ export class Section extends React.Component {
 const styles = StyleSheet.create({
   titleContainer: {
     padding: 16,
-  },
-  content: {
-    paddingTop: 16,
-    paddingBottom: 16,
-    paddingLeft: 32,
-    paddingRight: 32,
   },
 })

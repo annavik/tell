@@ -1,9 +1,11 @@
 import { colors } from '../config/colors'
+import { PageListView } from '../components/PageListView'
 import React from 'react'
 import { Section } from '../components/Section'
 import { TellButton } from '../components/TellButton'
 import { TellTextInput } from '../components/TellTextInput'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { typography } from '../config/typography'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
 export class EditBook extends React.Component {
   static navigationOptions = {
@@ -11,6 +13,8 @@ export class EditBook extends React.Component {
   }
 
   render() {
+    let pages = [{ key: 'page-0' }, { key: 'page-1' }, { key: 'page-2' }]
+
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -24,11 +28,17 @@ export class EditBook extends React.Component {
         </View>
         <ScrollView>
           <Section title="Framsida">
-            <TellTextInput theme="border" label="Titel" />
-            <TellTextInput theme="border" label="Författare" />
+            <View style={styles.sectionContent}>
+              <TellTextInput theme="border" label="Titel" />
+              <TellTextInput theme="border" label="Författare" />
+            </View>
           </Section>
-          <Section title="Sidor" backgroundColor={colors.accentUltraLight} />
-          <Section title="Inställningar" />
+          <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
+            <PageListView pages={pages} />
+            <Text style={styles.pageLabel}>
+              Din bok innehåller inga sidor än.
+            </Text>
+          </Section>
         </ScrollView>
       </View>
     )
@@ -49,5 +59,17 @@ const styles = StyleSheet.create({
   },
   space: {
     width: 16,
+  },
+  sectionContent: {
+    marginTop: 16,
+    marginBottom: 16,
+    marginLeft: 32,
+    marginRight: 32,
+  },
+  pageLabel: {
+    ...typography.labelMedium,
+    marginTop: 16,
+    marginBottom: 32,
+    textAlign: 'center',
   },
 })
