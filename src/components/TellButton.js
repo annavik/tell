@@ -104,8 +104,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   buttonSmall: {
-    height: 44,
-    borderRadius: 22,
+    height: 32,
+    borderRadius: 16,
+    paddingRight: 16,
+    paddingLeft: 16,
   },
   buttonMedium: {
     width: '100%',

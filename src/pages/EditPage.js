@@ -16,6 +16,7 @@ const TabNavigator = createMaterialTopTabNavigator(
     EditSound: EditSound,
   },
   {
+    initialRouteName: 'EditImage',
     tabBarOptions: {
       style: {
         backgroundColor: colors.white,
