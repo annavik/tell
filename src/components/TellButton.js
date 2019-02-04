@@ -36,6 +36,12 @@ export class TellButton extends React.Component {
     }
 
     switch (size) {
+      case 'tiny':
+        buttonStyles = {
+          ...buttonStyles,
+          ...styles.buttonTiny,
+        }
+        break
       case 'medium':
         buttonStyles = {
           ...buttonStyles,
@@ -103,11 +109,15 @@ const styles = StyleSheet.create({
     borderColor: colors.white,
     borderWidth: 1,
   },
-  buttonSmall: {
+  buttonTiny: {
     height: 32,
     borderRadius: 16,
     paddingRight: 16,
     paddingLeft: 16,
+  },
+  buttonSmall: {
+    height: 44,
+    borderRadius: 22,
   },
   buttonMedium: {
     width: '100%',

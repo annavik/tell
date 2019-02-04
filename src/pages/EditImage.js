@@ -1,19 +1,39 @@
 import { colors } from '../config/colors'
-import { ImagePicker } from '../components/ImagePicker'
+import { pickImage } from '../helpers/imageHandler'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
+import { TellImagePicker } from '../components/TellImagePicker'
 import { typography } from '../config/typography'
 import { Image, StyleSheet, Text, View } from 'react-native'
-
-const editImageState = {
-  NO_SUPPORT: 'NO_SUPPORT',
-  NO_IMAGE: 'NO_IMAGE',
-  HAS_IMAGE: 'HAS_IMAGE',
-}
 
 export class EditImage extends React.Component {
   static navigationOptions = {
     title: 'Bild',
+  }
+
+  state = {
+    hasSupport: true,
+    image: null,
+  }
+
+  onPickImagePress = async () => {
+    const pickedImage = await pickImage()
+
+    this.onImagePicked(pickedImage)
+  }
+
+  onRemoveImagePress = () => {
+    this.setState({
+      ...this.state,
+      image: null,
+    })
+  }
+
+  onImagePicked(image) {
+    this.setState({
+      ...this.state,
+      image: image,
+    })
   }
 
   renderNoSupport() {
@@ -27,10 +47,11 @@ export class EditImage extends React.Component {
   renderNoImage() {
     return (
       <View>
-        <ImagePicker
+        <TellImagePicker
           width="100%"
           aspectRatio={4 / 3}
           label="Ladda upp en bild"
+          onImagePicked={this.onImagePicked.bind(this)}
         />
         <View style={styles.message}>
           <Text style={typography.labelMedium}>
@@ -45,7 +66,7 @@ export class EditImage extends React.Component {
     return (
       <>
         <Image
-          source={{ uri: 'http://placekitten.com/600/800' }}
+          source={{ uri: this.state.image }}
           borderRadius={4}
           backgroundColor={colors.accentUltraLight}
           resizeMode="cover"
@@ -54,34 +75,38 @@ export class EditImage extends React.Component {
         <View style={styles.buttonContainer}>
           <TellButton
             title="Ta bort"
+            size="tiny"
             backgroundColor={colors.white}
             color={colors.black}
-            onPress={() => {}}
+            onPress={this.onRemoveImagePress.bind(this)}
           />
           <View style={styles.space} />
-          <TellButton title="Välj ny" onPress={() => {}} />
+          <TellButton
+            title="Välj ny"
+            size="tiny"
+            onPress={this.onPickImagePress.bind(this)}
+          />
         </View>
       </>
     )
   }
 
-  renderContent(state) {
-    switch (state) {
-      case editImageState.NO_SUPPORT:
-        return this.renderNoSupport()
-      case editImageState.NO_IMAGE:
-        return this.renderNoImage()
-      case editImageState.HAS_IMAGE:
-        return this.renderHasImage()
-      default:
-        return null
+  renderContent() {
+    const { hasSupport, image } = this.state
+
+    if (!hasSupport) {
+      return this.renderNoImage()
     }
+
+    if (!image) {
+      return this.renderNoImage()
+    }
+
+    return this.renderHasImage()
   }
 
   render() {
-    const state = editImageState.NO_IMAGE
-
-    return <View style={styles.container}>{this.renderContent(state)}</View>
+    return <View style={styles.container}>{this.renderContent()}</View>
   }
 }
 
