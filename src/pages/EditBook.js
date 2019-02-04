@@ -2,6 +2,7 @@ import { BookPage } from '../components/BookPage'
 import { colors } from '../config/colors'
 import { NewPage } from '../components/NewPage'
 import { PageListView } from '../components/PageListView'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Section } from '../components/Section'
 import { TellButton } from '../components/TellButton'
@@ -9,19 +10,16 @@ import { TellTextInput } from '../components/TellTextInput'
 import { typography } from '../config/typography'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
-let pages = [
-  { key: 'page-0', content: <BookPage pageNumber={1} /> },
-  { key: 'page-1', content: <BookPage pageNumber={2} /> },
-  { key: 'page-2', content: <BookPage pageNumber={3} /> },
-]
-let newBook = { key: 'new-book', content: <NewPage /> }
-
 export class EditBook extends React.Component {
   static navigationOptions = {
     title: 'Ny bok',
   }
 
-  getPageLabelText() {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
+  getPageLabelText(pages) {
     if (pages.length > 0) {
       return `Din bok innehåller ${pages.length} ${
         pages.length > 1 ? 'sidor' : 'sida'
@@ -32,6 +30,25 @@ export class EditBook extends React.Component {
   }
 
   render() {
+    let pages = [
+      {
+        key: 'page-0',
+        content: <BookPage pageNumber={1} />,
+        onPress: () => this.props.navigation.navigate('EditPage'),
+      },
+      {
+        key: 'page-1',
+        content: <BookPage pageNumber={2} />,
+        onPress: () => this.props.navigation.navigate('EditPage'),
+      },
+      {
+        key: 'page-2',
+        content: <BookPage pageNumber={3} />,
+        onPress: () => this.props.navigation.navigate('EditPage'),
+      },
+    ]
+    let newBook = { key: 'new-book', content: <NewPage /> }
+
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -52,7 +69,7 @@ export class EditBook extends React.Component {
           </Section>
           <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
             <PageListView pages={[...pages, newBook]} />
-            <Text style={styles.pageLabel}>{this.getPageLabelText()}</Text>
+            <Text style={styles.pageLabel}>{this.getPageLabelText(pages)}</Text>
           </Section>
         </ScrollView>
       </View>

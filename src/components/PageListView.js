@@ -1,13 +1,15 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
 
 export class PageListView extends React.Component {
   static propTypes = {
     pages: PropTypes.arrayOf(
       PropTypes.shape({
         key: PropTypes.string.isRequired,
+        content: PropTypes.element,
+        onPress: PropTypes.func,
       })
     ).isRequired,
   }
@@ -21,7 +23,13 @@ export class PageListView extends React.Component {
           showsHorizontalScrollIndicator={false}
           data={this.props.pages}
           renderItem={({ item }) => (
-            <View style={styles.item}>{item.content}</View>
+            <TouchableOpacity
+              onPress={item.onPress}
+              style={styles.item}
+              activeOpacity={0.8}
+            >
+              {item.content}
+            </TouchableOpacity>
           )}
         />
       </View>
