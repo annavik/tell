@@ -22,4 +22,8 @@ export const typography = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
   },
+  tabBarLabel: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
 })
