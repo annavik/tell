@@ -4,7 +4,7 @@ import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { TellImagePicker } from '../components/TellImagePicker'
 import { typography } from '../config/typography'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 export class EditImage extends React.Component {
   static navigationOptions = {
@@ -36,73 +36,53 @@ export class EditImage extends React.Component {
     })
   }
 
-  renderNoSupport() {
-    return (
-      <Text style={styles.noSupportLabel}>
-        Den layout du har valt innehåller ingen bild.
-      </Text>
-    )
-  }
-
-  renderNoImage() {
-    return (
-      <View>
-        <TellImagePicker
-          width="100%"
-          aspectRatio={4 / 3}
-          label="Ladda upp en bild"
-          onImagePicked={this.onImagePicked.bind(this)}
-        />
-        <View style={styles.message}>
-          <Text style={typography.labelMedium}>
-            Bilden kommer anpassas till format 4:3.
-          </Text>
-        </View>
-      </View>
-    )
-  }
-
-  renderHasImage() {
-    return (
-      <>
-        <Image
-          source={{ uri: this.state.image }}
-          borderRadius={4}
-          backgroundColor={colors.accentUltraLight}
-          resizeMode="cover"
-          style={styles.image}
-        />
-        <View style={styles.buttonContainer}>
-          <TellButton
-            title="Ta bort"
-            size="tiny"
-            backgroundColor={colors.white}
-            color={colors.black}
-            onPress={this.onRemoveImagePress.bind(this)}
-          />
-          <View style={styles.space} />
-          <TellButton
-            title="Välj ny"
-            size="tiny"
-            onPress={this.onPickImagePress.bind(this)}
-          />
-        </View>
-      </>
-    )
-  }
-
   renderContent() {
     const { hasSupport, image } = this.state
 
     if (!hasSupport) {
-      return this.renderNoImage()
+      return (
+        <Text style={styles.noSupportLabel}>
+          Den layout du har valt innehåller ingen bild.
+        </Text>
+      )
     }
 
-    if (!image) {
-      return this.renderNoImage()
-    }
+    const bottomContent = image ? (
+      <View style={styles.buttonContainer}>
+        <TellButton
+          title="Ta bort"
+          size="tiny"
+          backgroundColor={colors.white}
+          color={colors.black}
+          onPress={this.onRemoveImagePress.bind(this)}
+        />
+        <View style={styles.space} />
+        <TellButton
+          title="Välj ny"
+          size="tiny"
+          onPress={this.onPickImagePress.bind(this)}
+        />
+      </View>
+    ) : (
+      <View style={styles.message}>
+        <Text style={typography.labelMedium}>
+          Bilden kommer anpassas till format 4:3.
+        </Text>
+      </View>
+    )
 
-    return this.renderHasImage()
+    return (
+      <>
+        <TellImagePicker
+          image={image}
+          width="100%"
+          aspectRatio={4 / 3}
+          onImagePicked={this.onImagePicked.bind(this)}
+          contentLabel="Ladda upp en bild"
+        />
+        {bottomContent}
+      </>
+    )
   }
 
   render() {
@@ -126,10 +106,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginTop: 32,
     alignItems: 'center',
-  },
-  image: {
-    width: '100%',
-    aspectRatio: 4 / 3,
   },
   buttonContainer: {
     padding: 32,

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Section } from '../components/Section'
 import { TellButton } from '../components/TellButton'
+import { TellImagePicker } from '../components/TellImagePicker'
 import { TellTextInput } from '../components/TellTextInput'
 import { typography } from '../config/typography'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
@@ -19,6 +20,17 @@ export class EditBook extends React.Component {
     navigation: PropTypes.object,
   }
 
+  state = {
+    frontPageImage: null,
+  }
+
+  onImagePicked(image) {
+    this.setState({
+      ...this.state,
+      frontPageImage: image,
+    })
+  }
+
   getPageLabelText(pages) {
     if (pages.length > 0) {
       return `Din bok innehåller ${pages.length} ${
@@ -30,6 +42,8 @@ export class EditBook extends React.Component {
   }
 
   render() {
+    const { frontPageImage } = this.state
+
     let pages = [
       {
         key: 'page-0',
@@ -62,9 +76,16 @@ export class EditBook extends React.Component {
         </View>
         <ScrollView>
           <Section title="Framsida">
-            <View style={styles.sectionContent}>
+            <View style={styles.frontPageSection}>
               <TellTextInput theme="border" label="Titel" />
               <TellTextInput theme="border" label="Författare" />
+              <TellImagePicker
+                image={frontPageImage}
+                width={120}
+                aspectRatio={3 / 4}
+                onImagePicked={this.onImagePicked.bind(this)}
+                label="Bild"
+              />
             </View>
           </Section>
           <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
@@ -92,9 +113,9 @@ const styles = StyleSheet.create({
   space: {
     width: 16,
   },
-  sectionContent: {
+  frontPageSection: {
     marginTop: 16,
-    marginBottom: 16,
+    marginBottom: 32,
     marginLeft: 32,
     marginRight: 32,
   },

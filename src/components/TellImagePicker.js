@@ -4,14 +4,16 @@ import { PlusIcon } from './PlusIcon'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { typography } from '../config/typography'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 export class TellImagePicker extends React.Component {
   static propTypes = {
+    image: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     aspectRatio: PropTypes.number.isRequired,
-    label: PropTypes.string,
     onImagePicked: PropTypes.func.isRequired,
+    label: PropTypes.string,
+    contentLabel: PropTypes.string,
   }
 
   onPickImagePress = async () => {
@@ -20,24 +22,51 @@ export class TellImagePicker extends React.Component {
     this.props.onImagePicked(pickedImage)
   }
 
-  render() {
-    const { width, aspectRatio, label } = this.props
+  renderContent() {
+    const { image, width, aspectRatio, contentLabel } = this.props
 
-    const containerStyle = {
-      ...styles.container,
-      width: width,
-      aspectRatio: aspectRatio,
+    if (!image) {
+      return (
+        <TouchableOpacity
+          style={{
+            ...styles.container,
+            width: width,
+            aspectRatio: aspectRatio,
+          }}
+          activeOpacity={0.8}
+          onPress={this.onPickImagePress}
+        >
+          {contentLabel && (
+            <Text style={styles.contentLabel}>{contentLabel}</Text>
+          )}
+          <PlusIcon />
+        </TouchableOpacity>
+      )
     }
 
     return (
-      <TouchableOpacity
-        style={containerStyle}
-        activeOpacity={0.8}
-        onPress={this.onPickImagePress}
-      >
+      <Image
+        source={{ uri: image }}
+        borderRadius={4}
+        backgroundColor={colors.accentUltraLight}
+        resizeMode="cover"
+        style={{
+          ...styles.image,
+          width: width,
+          aspectRatio: aspectRatio,
+        }}
+      />
+    )
+  }
+
+  render() {
+    const { label } = this.props
+
+    return (
+      <>
         {label && <Text style={styles.label}>{label}</Text>}
-        <PlusIcon />
-      </TouchableOpacity>
+        {this.renderContent()}
+      </>
     )
   }
 }
@@ -50,7 +79,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.accentLight,
   },
+  image: {
+    borderRadius: 4,
+  },
   label: {
+    ...typography.labelSmall,
+    marginBottom: 8,
+  },
+  contentLabel: {
     ...typography.labelLarge,
     marginBottom: 16,
   },
