@@ -8,17 +8,21 @@ export class TellTextArea extends React.Component {
   static propTypes = {
     placeholder: PropTypes.string,
     maxLength: PropTypes.number,
+    onChangeText: PropTypes.func,
   }
 
   render() {
+    const { placeholder, maxLength, onChangeText } = this.props
+
     return (
       <View style={styles.container}>
         <TextInput
           style={styles.textArea}
-          placeholder={this.props.placeholder}
+          placeholder={placeholder}
           placeholderTextColor={colors.darkGrey}
-          maxLength={this.props.maxLength}
+          maxLength={maxLength}
           multiline
+          onChangeText={onChangeText}
         />
       </View>
     )

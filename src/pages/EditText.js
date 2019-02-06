@@ -10,14 +10,34 @@ export class EditText extends React.Component {
     title: 'Text',
   }
 
+  state = {
+    text: '',
+    maxLength: 240,
+  }
+
+  onChangeText(text) {
+    this.setState({
+      ...this.state,
+      text: text,
+    })
+  }
+
   render() {
+    const { maxLength, text } = this.state
+
     return (
       <View style={styles.container}>
         <View style={styles.message}>
-          <Text style={typography.messageLabel}>Antal tecken: 0 av 240</Text>
+          <Text style={typography.messageLabel}>
+            Antal tecken: {text.length} av {maxLength}
+          </Text>
         </View>
         <View style={styles.textContainer}>
-          <TellTextArea placeholder="Börja skriva!" />
+          <TellTextArea
+            placeholder="Börja skriva!"
+            maxLength={maxLength}
+            onChangeText={this.onChangeText.bind(this)}
+          />
         </View>
         <TellButton title="Spara text" size="medium" onPress={() => {}} />
       </View>
