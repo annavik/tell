@@ -65,7 +65,7 @@ export class EditImage extends React.Component {
       </View>
     ) : (
       <View style={styles.message}>
-        <Text style={typography.labelMedium}>
+        <Text style={typography.messageLabel}>
           Bilden kommer anpassas till format 4:3.
         </Text>
       </View>

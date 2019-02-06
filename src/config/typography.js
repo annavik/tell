@@ -22,8 +22,18 @@ export const typography = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
   },
+  paragraph: {
+    color: colors.black,
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 19.2,
+  },
   tabBarLabel: {
     fontSize: 14,
     fontWeight: '700',
+  },
+  messageLabel: {
+    color: colors.black,
+    fontSize: 14,
   },
 })

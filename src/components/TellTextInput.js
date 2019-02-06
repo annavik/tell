@@ -35,7 +35,11 @@ export class TellTextInput extends React.Component {
     return label ? (
       <View style={styles.inputContainer}>
         <Text style={styles.label}>{label}</Text>
-        <TextInput style={inputStyles} placeholder={placeholder} />
+        <TextInput
+          style={inputStyles}
+          placeholder={placeholder}
+          placeholderTextColor={colors.darkGrey}
+        />
       </View>
     ) : (
       <TextInput style={inputStyles} placeholder={placeholder} />

@@ -1,4 +1,8 @@
+import { colors } from '../config/colors'
 import React from 'react'
+import { TellButton } from '../components/TellButton'
+import { TellTextArea } from '../components/TellTextArea'
+import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
 export class EditText extends React.Component {
@@ -9,7 +13,13 @@ export class EditText extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Redigera text</Text>
+        <View style={styles.message}>
+          <Text style={typography.messageLabel}>Antal tecken: 0 av 240</Text>
+        </View>
+        <View style={styles.textContainer}>
+          <TellTextArea placeholder="Börja skriva!" />
+        </View>
+        <TellButton title="Spara text" size="medium" onPress={() => {}} />
       </View>
     )
   }
@@ -17,8 +27,19 @@ export class EditText extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 32,
     flex: 1,
-    justifyContent: 'center',
+  },
+  message: {
+    backgroundColor: colors.accentUltraLight,
+    padding: 16,
+    borderRadius: 4,
+    marginBottom: 32,
     alignItems: 'center',
+  },
+  textContainer: {
+    width: '100%',
+    flexGrow: 1,
+    marginBottom: 32,
   },
 })
