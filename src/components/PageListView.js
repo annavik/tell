@@ -39,8 +39,6 @@ export class PageListView extends React.Component {
 
 const styles = StyleSheet.create({
   itemsContainer: {
-    paddingTop: 16,
-    paddingBottom: 16,
     paddingLeft: 8,
     paddingRight: 8,
     flexGrow: 1,

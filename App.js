@@ -20,7 +20,7 @@ const AppNavigator = createStackNavigator(
     EditPage: { screen: EditPage },
   },
   {
-    initialRouteName: 'EditPage',
+    initialRouteName: 'Login',
     cardStyle: { backgroundColor: colors.white },
     defaultNavigationOptions: {
       headerStyle: {

@@ -11,6 +11,23 @@ import { TellTextInput } from '../components/TellTextInput'
 import { typography } from '../config/typography'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
+let pages = [
+  {
+    key: 'page-0',
+    content: <BookPage pageNumber={1} />,
+  },
+  {
+    key: 'page-1',
+    content: <BookPage pageNumber={2} />,
+  },
+  {
+    key: 'page-2',
+    content: <BookPage pageNumber={3} />,
+  },
+]
+
+let newBook = { key: 'new-book', content: <NewPage /> }
+
 export class EditBook extends React.Component {
   static navigationOptions = {
     title: 'Ny bok',
@@ -44,25 +61,6 @@ export class EditBook extends React.Component {
   render() {
     const { frontPageImage } = this.state
 
-    let pages = [
-      {
-        key: 'page-0',
-        content: <BookPage pageNumber={1} />,
-        onPress: () => this.props.navigation.navigate('EditPage'),
-      },
-      {
-        key: 'page-1',
-        content: <BookPage pageNumber={2} />,
-        onPress: () => this.props.navigation.navigate('EditPage'),
-      },
-      {
-        key: 'page-2',
-        content: <BookPage pageNumber={3} />,
-        onPress: () => this.props.navigation.navigate('EditPage'),
-      },
-    ]
-    let newBook = { key: 'new-book', content: <NewPage /> }
-
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -89,7 +87,9 @@ export class EditBook extends React.Component {
             </View>
           </Section>
           <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
-            <PageListView pages={[...pages, newBook]} />
+            <View style={styles.pageListContainer}>
+              <PageListView pages={[...pages.map(page => ({ ...page, onPress: () => this.props.navigation.navigate('EditPage')})), newBook]} />
+            </View>
             <Text style={styles.pageLabel}>{this.getPageLabelText(pages)}</Text>
           </Section>
         </ScrollView>
@@ -118,6 +118,10 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     marginLeft: 32,
     marginRight: 32,
+  },
+  pageListContainer: {
+    paddingTop: 16,
+    paddingBottom: 16,
   },
   pageLabel: {
     ...typography.labelMedium,

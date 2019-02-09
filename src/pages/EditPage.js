@@ -16,7 +16,7 @@ const TabNavigator = createMaterialTopTabNavigator(
     EditSound: EditSound,
   },
   {
-    initialRouteName: 'EditText',
+    initialRouteName: 'EditLayout',
     tabBarOptions: {
       style: {
         backgroundColor: colors.white,

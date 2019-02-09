@@ -36,4 +36,9 @@ export const typography = StyleSheet.create({
     color: colors.black,
     fontSize: 14,
   },
+  layoutLabel: {
+    color: colors.accentLight,
+    fontSize: 24,
+    fontWeight: '400',
+  },
 })
