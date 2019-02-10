@@ -11,7 +11,7 @@ import { TellTextInput } from '../components/TellTextInput'
 import { typography } from '../config/typography'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
-let pages = [
+const pages = [
   {
     key: 'page-0',
     content: <BookPage pageNumber={1} />,
@@ -26,7 +26,7 @@ let pages = [
   },
 ]
 
-let newBook = { key: 'new-book', content: <NewPage /> }
+const newBook = { key: 'new-book', content: <NewPage /> }
 
 export class EditBook extends React.Component {
   static navigationOptions = {
@@ -88,7 +88,15 @@ export class EditBook extends React.Component {
           </Section>
           <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
             <View style={styles.pageListContainer}>
-              <PageListView pages={[...pages.map(page => ({ ...page, onPress: () => this.props.navigation.navigate('EditPage')})), newBook]} />
+              <PageListView
+                pages={[
+                  ...pages.map(page => ({
+                    ...page,
+                    onPress: () => this.props.navigation.navigate('EditPage'),
+                  })),
+                  newBook,
+                ]}
+              />
             </View>
             <Text style={styles.pageLabel}>{this.getPageLabelText(pages)}</Text>
           </Section>

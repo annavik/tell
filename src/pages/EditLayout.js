@@ -1,28 +1,25 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { PageListView } from '../components/PageListView'
+import { colors } from '../config/colors'
 import { LayoutPage } from '../components/LayoutPage'
-import { colors } from '../config/colors';
-import { typography } from '../config/typography';
+import { PageListView } from '../components/PageListView'
+import React from 'react'
+import { typography } from '../config/typography'
+import { StyleSheet, Text, View } from 'react-native'
 
-let layouts = [
+const layouts = [
   {
     id: 'layout-a',
     title: 'Layout A',
     description: 'Landskapsbild i fullbredd.',
-    content: <LayoutPage id='layout-a' />,
   },
   {
     id: 'layout-b',
     title: 'Layout B',
     description: 'Landskapsbild med marginal.',
-    content: <LayoutPage id='layout-b' />,
   },
   {
     id: 'layout-c',
     title: 'Layout C',
     description: 'Bara text.',
-    content: <LayoutPage id='layout-c' />,
   },
 ]
 
@@ -36,7 +33,11 @@ export class EditLayout extends React.Component {
   }
 
   render() {
-    const { title, description } = layouts.find(layout => layout.id === this.state.selectedLayout)
+    const { selectedLayout } = this.state
+
+    const { title, description } = layouts.find(
+      layout => layout.id === selectedLayout
+    )
 
     return (
       <View style={styles.container}>
@@ -44,7 +45,20 @@ export class EditLayout extends React.Component {
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.text}>{description}</Text>
         </View>
-        <PageListView pages={layouts.map(layout => ({ key: layout.id, content: layout.content, onPress: () => { this.setState({...this.state, selectedLayout: layout.id})}}))} />
+        <PageListView
+          pages={layouts.map(layout => ({
+            key: layout.id,
+            content: (
+              <LayoutPage
+                id={layout.id}
+                selected={layout.id === selectedLayout}
+              />
+            ),
+            onPress: () => {
+              this.setState({ ...this.state, selectedLayout: layout.id })
+            },
+          }))}
+        />
       </View>
     )
   }

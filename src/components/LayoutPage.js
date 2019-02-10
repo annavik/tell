@@ -1,23 +1,25 @@
-import { colors } from '../config/colors';
+import { CheckIcon } from './CheckIcon'
+import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { typography } from '../config/typography';
+import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
 export class LayoutPage extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
+    selected: PropTypes.bool,
   }
 
-  render() {
-    switch(this.props.id) {
+  getContent(id) {
+    switch (id) {
       case 'layout-a':
         return (
           <>
-            <View style={{ ...styles.container, padding: 0}}>
+            <View style={{ ...styles.content, padding: 0 }}>
               <View style={styles.imageContainer} />
             </View>
-            <View style={styles.container}>
+            <View style={styles.content}>
               <View style={styles.textContainer}>
                 <Text style={typography.layoutLabel}>T</Text>
               </View>
@@ -25,34 +27,59 @@ export class LayoutPage extends React.Component {
           </>
         )
       case 'layout-b':
-      return (
-        <>
-          <View style={{ ...styles.container, paddingBottom: 8 }}>
-            <View style={styles.imageContainer} />
-          </View>
-          <View style={{ ...styles.container, paddingTop: 8 }}>
-            <View style={styles.textContainer}>
-              <Text style={typography.layoutLabel}>T</Text>
+        return (
+          <>
+            <View style={{ ...styles.content, paddingBottom: 8 }}>
+              <View style={styles.imageContainer} />
             </View>
-          </View>
-        </>
-      )
+            <View style={{ ...styles.content, paddingTop: 8 }}>
+              <View style={styles.textContainer}>
+                <Text style={typography.layoutLabel}>T</Text>
+              </View>
+            </View>
+          </>
+        )
       case 'layout-c':
         return (
-          <View style={styles.container}>
+          <View style={styles.content}>
             <View style={styles.textContainer}>
               <Text style={typography.layoutLabel}>T</Text>
             </View>
           </View>
-      )
+        )
       default:
-            return null
+        return null
     }
+  }
+
+  render() {
+    const { id, selected } = this.props
+
+    const content = this.getContent(id)
+
+    if (!content) {
+      return null
+    }
+
+    return (
+      <View style={styles.container}>
+        {content}
+        {selected && (
+          <View style={styles.selectedContainer}>
+            <CheckIcon />
+          </View>
+        )}
+      </View>
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    position: 'relative',
+  },
+  content: {
     flexGrow: 1,
     flexBasis: '50%',
     padding: 16,
@@ -65,5 +92,10 @@ const styles = StyleSheet.create({
   imageContainer: {
     backgroundColor: colors.accentLight,
     flex: 1,
+  },
+  selectedContainer: {
+    position: 'absolute',
+    bottom: 8,
+    right: 8,
   },
 })

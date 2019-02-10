@@ -13,7 +13,7 @@ export class Section extends React.Component {
   render() {
     const { title, backgroundColor, children } = this.props
 
-    let containerStyle = backgroundColor ? { backgroundColor } : {}
+    const containerStyle = backgroundColor ? { backgroundColor } : {}
 
     return (
       <View style={containerStyle}>
