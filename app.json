@@ -24,6 +24,16 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "firebase": {
+        "apiKey": "AIzaSyAqiq6aPf67GcgaNq0zYiWT4RV_ngUGW6s",
+        "authDomain": "tell-5dcdf.firebaseapp.com",
+        "databaseURL": "https://tell-5dcdf.firebaseio.com",
+        "projectId": "tell-5dcdf",
+        "storageBucket": "tell-5dcdf.appspot.com",
+        "messagingSenderId": "380262745273"
+      }
     }
   }
 }

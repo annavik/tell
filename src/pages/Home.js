@@ -1,6 +1,7 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { signOut } from '../utils/auth'
 import { TellButton } from '../components/TellButton'
 import { UserInfo } from '../components/UserInfo'
 import { Image, ImageBackground, StyleSheet, View } from 'react-native'
@@ -50,7 +51,7 @@ export class Home extends React.Component {
             backgroundColor={colors.white}
             color={colors.black}
             size="large"
-            onPress={() => this.props.navigation.goBack()}
+            onPress={signOut}
           />
         </View>
         <View style={styles.bottom}>

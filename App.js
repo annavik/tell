@@ -3,6 +3,7 @@ import { CreateAccount } from './src/pages/CreateAccount'
 import { EditBook } from './src/pages/EditBook'
 import { EditPage } from './src/pages/EditPage'
 import { Home } from './src/pages/Home'
+import { Loading } from './src/pages/Loading'
 import { Login } from './src/pages/Login'
 import { MyBooks } from './src/pages/MyBooks'
 import React from 'react'
@@ -12,15 +13,16 @@ import { createAppContainer, createStackNavigator } from 'react-navigation'
 
 const AppNavigator = createStackNavigator(
   {
-    Login: { screen: Login },
-    CreateAccount: { screen: CreateAccount },
+    Loading: { screen: Loading },
     Home: { screen: Home },
     MyBooks: { screen: MyBooks },
     EditBook: { screen: EditBook },
     EditPage: { screen: EditPage },
+    Login: { screen: Login },
+    CreateAccount: { screen: CreateAccount },
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Loading',
     cardStyle: { backgroundColor: colors.white },
     defaultNavigationOptions: {
       headerStyle: {

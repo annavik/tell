@@ -9,10 +9,11 @@ export class TellTextInput extends React.Component {
     label: PropTypes.string,
     placeholder: PropTypes.string,
     theme: PropTypes.string,
+    onChangeText: PropTypes.func,
   }
 
   render() {
-    const { label, placeholder, theme } = this.props
+    const { label, placeholder, theme, onChangeText } = this.props
 
     let inputStyles
 
@@ -39,10 +40,15 @@ export class TellTextInput extends React.Component {
           style={inputStyles}
           placeholder={placeholder}
           placeholderTextColor={colors.darkGrey}
+          onChangeText={onChangeText}
         />
       </View>
     ) : (
-      <TextInput style={inputStyles} placeholder={placeholder} />
+      <TextInput
+        style={inputStyles}
+        placeholder={placeholder}
+        onChangeText={onChangeText}
+      />
     )
   }
 }

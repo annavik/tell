@@ -1,6 +1,7 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { signIn } from '../utils/auth'
 import { TellButton } from '../components/TellButton'
 import { TellTextInput } from '../components/TellTextInput'
 import { typography } from '../config/typography'
@@ -26,6 +27,11 @@ export class Login extends React.Component {
     header: null,
   }
 
+  state = {
+    email: '',
+    password: '',
+  }
+
   render() {
     return (
       <ImageBackground source={bg} style={styles.background}>
@@ -33,12 +39,32 @@ export class Login extends React.Component {
           <KeyboardAvoidingView behavior="position">
             <View style={styles.mainContent}>
               <Image source={logo} style={styles.logo} />
-              <TellTextInput placeholder="E-post" />
-              <TellTextInput placeholder="Lösenord" />
+              <TellTextInput
+                placeholder="E-post"
+                onChangeText={email => {
+                  this.setState({
+                    ...this.state,
+                    email: email,
+                  })
+                }}
+              />
+              <TellTextInput
+                placeholder="Lösenord"
+                onChangeText={password => {
+                  this.setState({
+                    ...this.state,
+                    password: password,
+                  })
+                }}
+              />
               <TellButton
                 title="Logga in"
                 size="large"
-                onPress={() => this.props.navigation.navigate('Home')}
+                onPress={() => {
+                  const { email, password } = this.state
+
+                  signIn(email, password)
+                }}
               />
             </View>
           </KeyboardAvoidingView>

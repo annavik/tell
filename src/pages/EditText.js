@@ -15,13 +15,6 @@ export class EditText extends React.Component {
     maxLength: 240,
   }
 
-  onChangeText(text) {
-    this.setState({
-      ...this.state,
-      text: text,
-    })
-  }
-
   render() {
     const { maxLength, text } = this.state
 
@@ -36,7 +29,12 @@ export class EditText extends React.Component {
           <TellTextArea
             placeholder="Börja skriva!"
             maxLength={maxLength}
-            onChangeText={this.onChangeText.bind(this)}
+            onChangeText={text => {
+              this.setState({
+                ...this.state,
+                text: text,
+              })
+            }}
           />
         </View>
         <TellButton title="Spara text" size="medium" onPress={() => {}} />
