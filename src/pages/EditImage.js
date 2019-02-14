@@ -1,5 +1,5 @@
 import { colors } from '../config/colors'
-import { pickImage } from '../helpers/imageHandler'
+import { pickImage } from '../utils/imageHandler'
 import React from 'react'
 import { TellButton } from '../components/TellButton'
 import { TellImagePicker } from '../components/TellImagePicker'

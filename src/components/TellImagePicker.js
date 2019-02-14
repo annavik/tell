@@ -1,5 +1,5 @@
 import { colors } from '../config/colors'
-import { pickImage } from '../helpers/imageHandler'
+import { pickImage } from '../utils/imageHandler'
 import { PlusIcon } from './PlusIcon'
 import PropTypes from 'prop-types'
 import React from 'react'
