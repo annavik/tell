@@ -1,6 +1,6 @@
-import { colors } from '../config/colors'
+import { colors } from '../../config/colors'
 import React from 'react'
-import { typography } from '../config/typography'
+import { typography } from '../../config/typography'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
 export class UserInfo extends React.Component {

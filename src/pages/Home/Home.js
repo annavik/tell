@@ -1,13 +1,14 @@
-import { colors } from '../config/colors'
+import { colors } from '../../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { signOut } from '../utils/auth'
-import { TellButton } from '../components/TellButton'
-import { UserInfo } from '../components/UserInfo'
+import { showAlert } from '../../utils/showAlert'
+import { signOut } from '../../utils/auth'
+import { TellButton } from '../../components/TellButton'
+import { UserInfo } from './UserInfo'
 import { Image, ImageBackground, StyleSheet, View } from 'react-native'
 
-const bg = require('../../assets/images/bg_home.jpg')
-const logo = require('../../assets/images/logo_small.png')
+const bg = require('../../../assets/images/bg_home.jpg')
+const logo = require('../../../assets/images/logo_small.png')
 
 export class Home extends React.Component {
   static propTypes = {
@@ -17,6 +18,14 @@ export class Home extends React.Component {
   static navigationOptions = {
     title: 'Hem',
     header: null,
+  }
+
+  async signOut() {
+    try {
+      await signOut()
+    } catch {
+      showAlert('Det gick inte att logga ut.')
+    }
   }
 
   render() {
@@ -51,7 +60,7 @@ export class Home extends React.Component {
             backgroundColor={colors.white}
             color={colors.black}
             size="large"
-            onPress={signOut}
+            onPress={() => this.signOut()}
           />
         </View>
         <View style={styles.bottom}>
@@ -64,14 +73,13 @@ export class Home extends React.Component {
 
 const styles = StyleSheet.create({
   background: {
-    width: '100%',
-    height: '100%',
+   flex: 1
   },
   top: {
     backgroundColor: colors.primary,
   },
   main: {
-    flexGrow: 1,
+    flex: 1,
     padding: 32,
     justifyContent: 'center',
   },
