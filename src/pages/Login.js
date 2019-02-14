@@ -52,7 +52,7 @@ export class Login extends React.Component {
     try {
       await signIn(email, password)
     } catch {
-      showAlert('Det gick inte all logga in.')
+      showAlert('Det gick inte att logga in.')
     }
   }
 

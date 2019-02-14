@@ -1,5 +1,6 @@
 import { colors } from './colors'
 import { StyleSheet } from 'react-native'
+import { typography } from './typography'
 
 export const sharedStyles = StyleSheet.create({
   textInputPlain: {
@@ -20,8 +21,12 @@ export const sharedStyles = StyleSheet.create({
     borderRadius: 4,
     paddingRight: 16,
     paddingLeft: 16,
-    marginBottom: 16,
+    marginBottom: 24,
     borderWidth: 1,
     borderColor: colors.accentLight,
+  },
+  textInputLabel: {
+    ...typography.labelSmall,
+    marginBottom: 8,
   },
 })
