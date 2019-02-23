@@ -30,28 +30,3 @@ export const textInputStyles = StyleSheet.create({
     marginBottom: 8,
   },
 })
-
-export const buttonStyles = StyleSheet.create({
-  buttonTiny: {
-    width: 'auto',
-    height: 32,
-    borderRadius: 16,
-    paddingRight: 16,
-    paddingLeft: 16,
-  },
-  buttonSmall: {
-    width: 'auto',
-    height: 44,
-    borderRadius: 22,
-  },
-  buttonMedium: {
-    width: '100%',
-    height: 44,
-    borderRadius: 4,
-  },
-  buttonLarge: {
-    width: '100%',
-    height: 52,
-    borderRadius: 4,
-  },
-})

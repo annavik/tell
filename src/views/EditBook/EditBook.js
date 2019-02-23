@@ -1,4 +1,3 @@
-import { buttonStyles } from '../../config/styles'
 import { BookPage } from './BookPage'
 import { colors } from '../../config/colors'
 import { NewPage } from './NewPage'
@@ -7,9 +6,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Section } from './Section'
 import { textInputStyles } from '../../config/styles'
-import { TellButton } from '../../ui-components/TellButton'
 import { TellImagePicker } from '../../ui-components/TellImagePicker'
 import { typography } from '../../config/typography'
+import { buttonSizes, buttonThemes, TellButton } from '../../ui-components/TellButton'
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const views = [
@@ -68,14 +67,10 @@ export class EditBook extends React.Component {
           <View style={styles.buttonContainer}>
             <TellButton
               title="Läs"
-              buttonStyles={{
-                ...buttonStyles.buttonSmall,
-                borderWidth: 1,
-                backgroundColor: 'transparent',
+              style={{
+                ...buttonSizes.small,
+                ...buttonThemes.border,
                 marginRight: 8,
-              }}
-              labelStyles={{
-                colors: colors.white,
               }}
               onPress={() => {}}
             />
@@ -83,14 +78,10 @@ export class EditBook extends React.Component {
           <View style={styles.buttonContainer}>
             <TellButton
               title="Spara"
-              buttonStyles={{
-                ...buttonStyles.buttonSmall,
-                borderWidth: 1,
-                backgroundColor: 'transparent',
+              style={{
+                ...buttonSizes.small,
+                ...buttonThemes.border,
                 marginLeft: 8,
-              }}
-              labelStyles={{
-                colors: colors.white,
               }}
               onPress={() => {}}
             />

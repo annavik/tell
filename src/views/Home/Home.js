@@ -1,10 +1,9 @@
-import { buttonStyles } from '../../config/styles'
 import { colors } from '../../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { showAlert } from '../../utils/showAlert'
 import { signOut } from '../../utils/auth'
-import { TellButton } from '../../ui-components/TellButton'
+import { buttonSizes, TellButton } from '../../ui-components/TellButton'
 import { UserInfo } from './UserInfo'
 import { Image, ImageBackground, StyleSheet, View } from 'react-native'
 
@@ -36,45 +35,45 @@ export class Home extends React.Component {
         <View style={styles.main}>
           <TellButton
             title="Mina böcker"
-            buttonStyles={{
-              ...buttonStyles.buttonLarge,
+            style={{
+              ...buttonSizes.large,
               marginBottom: 16,
             }}
             onPress={() => this.props.navigation.navigate('MyBooks')}
           />
           <TellButton
             title="Bibliotek"
-            buttonStyles={{
-              ...buttonStyles.buttonLarge,
+            style={{
+              ...buttonSizes.large,
               backgroundColor: colors.white,
               marginBottom: 16,
             }}
-            labelStyles={{
-              color: colors.white
+            labelStyle={{
+              color: colors.black
             }}
             onPress={() => {}}
           />
           <TellButton
             title="Profil"
-            buttonStyles={{
-              ...buttonStyles.buttonLarge,
+            style={{
+              ...buttonSizes.large,
               backgroundColor: colors.white,
               marginBottom: 16,
             }}
-            labelStyles={{
-              color: colors.white
+            labelStyle={{
+              color: colors.black
             }}
             onPress={() => {}}
           />
           <TellButton
             title="Logga ut"
-            buttonStyles={{
-              ...buttonStyles.buttonLarge,
+            style={{
+              ...buttonSizes.large,
               backgroundColor: colors.white,
               marginBottom: 16,
             }}
-            labelStyles={{
-              color: colors.white
+            labelStyle={{
+              color: colors.black
             }}
             onPress={() => this.signOut()}
           />

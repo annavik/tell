@@ -7,27 +7,27 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 export class TellButton extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    buttonStyles: PropTypes.object,
-    labelStyles: PropTypes.object,
+    style: PropTypes.object,
+    labelStyle: PropTypes.object,
     onPress: PropTypes.func.isRequired,
   }
 
   render() {
-    const { title, buttonStyles, labelStyles, onPress } = this.props
+    const { title, style, labelStyle, onPress } = this.props
 
     return (
       <TouchableOpacity
-        style={{ ...styles.button, ...buttonStyles }}
+        style={{ ...baseStyles.button, ...style }}
         onPress={onPress}
         activeOpacity={0.8}
       >
-        <Text style={{ ...styles.label, ...labelStyles }}>{title}</Text>
+        <Text style={{ ...baseStyles.label, ...labelStyle }}>{title}</Text>
       </TouchableOpacity>
     )
   }
 }
 
-const styles = StyleSheet.create({
+const baseStyles = StyleSheet.create({
   button: {
     width: '100%',
     justifyContent: 'center',
@@ -37,11 +37,45 @@ const styles = StyleSheet.create({
     height: 44,
     borderRadius: 4,
     backgroundColor: colors.primary,
-    borderWidth: 0,
-    borderColor: colors.white,
   },
   label: {
     ...typography.labelMedium,
     color: colors.white,
+  },
+})
+
+export const buttonSizes = StyleSheet.create({
+  tiny: {
+    width: 'auto',
+    height: 32,
+    borderRadius: 16,
+    paddingRight: 16,
+    paddingLeft: 16,
+  },
+  small: {
+    width: 'auto',
+    height: 44,
+    borderRadius: 22,
+  },
+  medium: {
+    width: '100%',
+    height: 44,
+    borderRadius: 4,
+  },
+  large: {
+    width: '100%',
+    height: 52,
+    borderRadius: 4,
+  },
+})
+
+export const buttonThemes = StyleSheet.create({
+  solid: {
+    backgroundColor: colors.primary,
+  },
+  border: {
+    borderWidth: 1,
+    borderColor: colors.white,
+    backgroundColor: 'transparent',
   },
 })

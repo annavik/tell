@@ -1,9 +1,12 @@
-import { buttonStyles } from '../config/styles'
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { TellButton } from '../ui-components/TellButton'
 import { typography } from '../config/typography'
+import {
+  buttonSizes,
+  buttonThemes,
+  TellButton,
+} from '../ui-components/TellButton'
 import { StyleSheet, Text, View } from 'react-native'
 
 export class MyBooks extends React.Component {
@@ -22,10 +25,9 @@ export class MyBooks extends React.Component {
           <View style={styles.buttonContainer}>
             <TellButton
               title="Redigera lista"
-              buttonStyles={{
-                ...buttonStyles.buttonTiny,
-                borderWidth: 1,
-                backgroundColor: 'transparent',
+              style={{
+                ...buttonSizes.small,
+                ...buttonThemes.border,
                 marginRight: 8,
               }}
               onPress={() => {}}
@@ -34,10 +36,9 @@ export class MyBooks extends React.Component {
           <View style={styles.buttonContainer}>
             <TellButton
               title="Ny bok"
-              buttonStyles={{
-                ...buttonStyles.buttonTiny,
-                borderWidth: 1,
-                backgroundColor: 'transparent',
+              style={{
+                ...buttonSizes.small,
+                ...buttonThemes.border,
                 marginLeft: 8,
               }}
               onPress={() => this.props.navigation.navigate('EditBook')}
@@ -50,6 +51,7 @@ export class MyBooks extends React.Component {
           </Text>
           <TellButton
             title="Skapa din första bok!"
+            style={buttonSizes.small}
             onPress={() => this.props.navigation.navigate('EditBook')}
           />
         </View>

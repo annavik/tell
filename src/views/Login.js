@@ -3,9 +3,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { showAlert } from '../utils/showAlert'
 import { signIn } from '../utils/auth'
-import { TellButton } from '../ui-components/TellButton'
+import { textInputStyles } from '../config/styles'
 import { typography } from '../config/typography'
-import { buttonStyles, textInputStyles } from '../config/styles'
+import {
+  buttonSizes,
+  buttonThemes,
+  TellButton,
+} from '../ui-components/TellButton'
 import {
   Image,
   ImageBackground,
@@ -88,7 +92,7 @@ export class Login extends React.Component {
 
               <TellButton
                 title="Logga in"
-                buttonStyles={buttonStyles.buttonLarge}
+                style={buttonSizes.large}
                 onPress={() => this.signIn()}
               />
             </View>
@@ -98,13 +102,9 @@ export class Login extends React.Component {
           <Text style={styles.label}>Ny användare?</Text>
           <TellButton
             title="Registrera dig gratis"
-            buttonStyles={{
-              ...buttonStyles.buttonSmall,
-              borderWidth: 1,
-              backgroundColor: 'transparent',
-            }}
-            labelStyles={{
-              color: colors.white,
+            style={{
+              ...buttonSizes.small,
+              ...buttonThemes.border,
             }}
             onPress={() => this.props.navigation.navigate('CreateAccount')}
           />

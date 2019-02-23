@@ -1,10 +1,9 @@
-import { buttonStyles } from '../config/styles'
 import { colors } from '../config/colors'
 import { pickImage } from '../utils/imageHandler'
 import React from 'react'
-import { TellButton } from '../ui-components/TellButton'
 import { TellImagePicker } from '../ui-components/TellImagePicker'
 import { typography } from '../config/typography'
+import { buttonSizes, TellButton } from '../ui-components/TellButton'
 import { StyleSheet, Text, View } from 'react-native'
 
 export class EditImage extends React.Component {
@@ -52,20 +51,20 @@ export class EditImage extends React.Component {
       <View style={styles.buttonContainer}>
         <TellButton
           title="Ta bort"
-          buttonStyles={{
-            ...buttonStyles.buttonTiny,
+          style={{
+            ...buttonSizes.tiny,
             backgroundColor: 'transparent',
             marginRight: 8,
           }}
-          labelStyles={{
+          labelStyle={{
             color: colors.black,
           }}
           onPress={this.onRemoveImagePress.bind(this)}
         />
         <TellButton
           title="Välj ny"
-          buttonStyles={{
-            ...buttonStyles.buttonTiny,
+          style={{
+            ...buttonSizes.tiny,
             marginLeft: 8,
           }}
           onPress={this.onPickImagePress.bind(this)}
