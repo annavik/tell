@@ -1,10 +1,9 @@
-import { colors } from '../config/colors'
 import { CreateAccount } from './CreateAccount'
 import { createStackNavigator } from 'react-navigation'
 import { Login } from './Login'
+import { navigationSettings } from '../config/settings'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { typography } from '../config/typography'
 
 const LoginWallNavigator = createStackNavigator(
   {
@@ -13,19 +12,7 @@ const LoginWallNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Login',
-    cardStyle: { backgroundColor: colors.white },
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: colors.primary,
-        borderBottomWidth: 0,
-      },
-      headerTitleStyle: {
-        ...typography.labelLarge,
-        color: colors.white,
-      },
-      headerTintColor: colors.white,
-      headerBackTitle: null,
-    },
+    ...navigationSettings,
   }
 )
 

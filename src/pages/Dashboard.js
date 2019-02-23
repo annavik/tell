@@ -1,12 +1,11 @@
-import { colors } from '../config/colors'
 import { createStackNavigator } from 'react-navigation'
 import { EditBook } from './EditBook'
 import { EditPage } from './EditPage'
 import { Home } from './Home/Home'
 import { MyBooks } from './MyBooks'
+import { navigationSettings } from '../config/settings'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { typography } from '../config/typography'
 
 const DashboardNavigator = createStackNavigator(
   {
@@ -17,19 +16,7 @@ const DashboardNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-    cardStyle: { backgroundColor: colors.white },
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: colors.primary,
-        borderBottomWidth: 0,
-      },
-      headerTitleStyle: {
-        ...typography.labelLarge,
-        color: colors.white,
-      },
-      headerTintColor: colors.white,
-      headerBackTitle: null,
-    },
+    ...navigationSettings,
   }
 )
 
