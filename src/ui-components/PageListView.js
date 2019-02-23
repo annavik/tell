@@ -5,7 +5,7 @@ import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
 
 export class PageListView extends React.Component {
   static propTypes = {
-    pages: PropTypes.arrayOf(
+    views: PropTypes.arrayOf(
       PropTypes.shape({
         key: PropTypes.string.isRequired,
         content: PropTypes.element,
@@ -21,7 +21,7 @@ export class PageListView extends React.Component {
           horizontal={true}
           contentContainerStyle={styles.itemsContainer}
           showsHorizontalScrollIndicator={false}
-          data={this.props.pages}
+          data={this.props.views}
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={item.onPress}

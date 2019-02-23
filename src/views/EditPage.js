@@ -1,7 +1,7 @@
 import { colors } from '../config/colors'
 import { createMaterialTopTabNavigator } from 'react-navigation'
 import { EditImage } from './EditImage'
-import { EditLayout } from './EditLayout'
+import { EditLayout } from './EditLayout/EditLayout'
 import { EditSound } from './EditSound'
 import { EditText } from './EditText'
 import PropTypes from 'prop-types'

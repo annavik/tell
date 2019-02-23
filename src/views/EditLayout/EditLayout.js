@@ -1,8 +1,8 @@
-import { colors } from '../config/colors'
-import { LayoutPage } from '../components/LayoutPage'
-import { PageListView } from '../components/PageListView'
+import { colors } from '../../config/colors'
+import { LayoutPage } from './LayoutPage'
+import { PageListView } from '../../ui-components/PageListView'
 import React from 'react'
-import { typography } from '../config/typography'
+import { typography } from '../../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
 const layouts = [
@@ -46,7 +46,7 @@ export class EditLayout extends React.Component {
           <Text style={styles.text}>{description}</Text>
         </View>
         <PageListView
-          pages={layouts.map(layout => ({
+          views={layouts.map(layout => ({
             key: layout.id,
             content: (
               <LayoutPage

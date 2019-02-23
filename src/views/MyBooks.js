@@ -1,7 +1,7 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { TellButton } from '../components/TellButton'
+import { TellButton } from '../ui-components/TellButton'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 

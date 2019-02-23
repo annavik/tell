@@ -1,7 +1,7 @@
 import { colors } from '../config/colors'
 import React from 'react'
-import { TellButton } from '../components/TellButton'
-import { TellTextArea } from '../components/TellTextArea'
+import { TellButton } from '../ui-components/TellButton'
+import { TellTextArea } from '../ui-components/TellTextArea'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 

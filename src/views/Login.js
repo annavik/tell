@@ -4,7 +4,7 @@ import React from 'react'
 import { sharedStyles } from '../config/sharedStyles'
 import { showAlert } from '../utils/showAlert'
 import { signIn } from '../utils/auth'
-import { TellButton } from '../components/TellButton'
+import { TellButton } from '../ui-components/TellButton'
 import { typography } from '../config/typography'
 import {
   Image,

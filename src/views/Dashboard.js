@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation'
-import { EditBook } from './EditBook'
+import { EditBook } from './EditBook/EditBook'
 import { EditPage } from './EditPage'
 import { Home } from './Home/Home'
 import { MyBooks } from './MyBooks'

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { typography } from '../config/typography'
+import { typography } from '../../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
 export class Section extends React.Component {

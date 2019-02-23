@@ -3,7 +3,7 @@ import React from 'react'
 import { sharedStyles } from '../config/sharedStyles'
 import { showAlert } from '../utils/showAlert'
 import { signUp } from '../utils/auth'
-import { TellButton } from '../components/TellButton'
+import { TellButton } from '../ui-components/TellButton'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 export class CreateAccount extends React.Component {

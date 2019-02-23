@@ -1,7 +1,7 @@
-import { colors } from '../config/colors'
+import { colors } from '../../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { typography } from '../config/typography'
+import { typography } from '../../config/typography'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 export class BookPage extends React.Component {

@@ -1,17 +1,17 @@
-import { BookPage } from '../components/BookPage'
-import { colors } from '../config/colors'
-import { NewPage } from '../components/NewPage'
-import { PageListView } from '../components/PageListView'
+import { BookPage } from './BookPage'
+import { colors } from '../../config/colors'
+import { NewPage } from './NewPage'
+import { PageListView } from '../../ui-components/PageListView'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Section } from '../components/Section'
-import { TellButton } from '../components/TellButton'
-import { TellImagePicker } from '../components/TellImagePicker'
-import { TellTextInput } from '../components/TellTextInput'
-import { typography } from '../config/typography'
+import { Section } from './Section'
+import { TellButton } from '../../ui-components/TellButton'
+import { TellImagePicker } from '../../ui-components/TellImagePicker'
+import { TellTextInput } from '../../ui-components/TellTextInput'
+import { typography } from '../../config/typography'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
-const pages = [
+const views = [
   {
     key: 'page-0',
     content: <BookPage pageNumber={1} />,
@@ -48,10 +48,10 @@ export class EditBook extends React.Component {
     })
   }
 
-  getPageLabelText(pages) {
-    if (pages.length > 0) {
-      return `Din bok innehåller ${pages.length} ${
-        pages.length > 1 ? 'sidor' : 'sida'
+  getPageLabelText(views) {
+    if (views.length > 0) {
+      return `Din bok innehåller ${views.length} ${
+        views.length > 1 ? 'sidor' : 'sida'
       }.`
     }
 
@@ -89,8 +89,8 @@ export class EditBook extends React.Component {
           <Section title="Sidor" backgroundColor={colors.accentUltraLight}>
             <View style={styles.pageListContainer}>
               <PageListView
-                pages={[
-                  ...pages.map(page => ({
+                views={[
+                  ...views.map(page => ({
                     ...page,
                     onPress: () => this.props.navigation.navigate('EditPage'),
                   })),
@@ -98,7 +98,7 @@ export class EditBook extends React.Component {
                 ]}
               />
             </View>
-            <Text style={styles.pageLabel}>{this.getPageLabelText(pages)}</Text>
+            <Text style={styles.pageLabel}>{this.getPageLabelText(views)}</Text>
           </Section>
         </ScrollView>
       </View>

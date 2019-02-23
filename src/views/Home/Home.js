@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { showAlert } from '../../utils/showAlert'
 import { signOut } from '../../utils/auth'
-import { TellButton } from '../../components/TellButton'
+import { TellButton } from '../../ui-components/TellButton'
 import { UserInfo } from './UserInfo'
 import { Image, ImageBackground, StyleSheet, View } from 'react-native'
 

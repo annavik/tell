@@ -1,8 +1,8 @@
 import { colors } from '../config/colors'
 import { pickImage } from '../utils/imageHandler'
 import React from 'react'
-import { TellButton } from '../components/TellButton'
-import { TellImagePicker } from '../components/TellImagePicker'
+import { TellButton } from '../ui-components/TellButton'
+import { TellImagePicker } from '../ui-components/TellImagePicker'
 import { typography } from '../config/typography'
 import { StyleSheet, Text, View } from 'react-native'
 
