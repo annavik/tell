@@ -1,3 +1,4 @@
+import { buttonStyles } from '../../config/styles'
 import { BookPage } from './BookPage'
 import { colors } from '../../config/colors'
 import { NewPage } from './NewPage'
@@ -65,11 +66,34 @@ export class EditBook extends React.Component {
       <View style={styles.container}>
         <View style={styles.top}>
           <View style={styles.buttonContainer}>
-            <TellButton title="Läs" theme="border" onPress={() => {}} />
+            <TellButton
+              title="Läs"
+              buttonStyles={{
+                ...buttonStyles.buttonSmall,
+                borderWidth: 1,
+                backgroundColor: 'transparent',
+                marginRight: 8,
+              }}
+              labelStyles={{
+                colors: colors.white,
+              }}
+              onPress={() => {}}
+            />
           </View>
-          <View style={styles.space} />
           <View style={styles.buttonContainer}>
-            <TellButton title="Spara" theme="border" onPress={() => {}} />
+            <TellButton
+              title="Spara"
+              buttonStyles={{
+                ...buttonStyles.buttonSmall,
+                borderWidth: 1,
+                backgroundColor: 'transparent',
+                marginLeft: 8,
+              }}
+              labelStyles={{
+                colors: colors.white,
+              }}
+              onPress={() => {}}
+            />
           </View>
         </View>
         <ScrollView>
@@ -127,9 +151,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-  },
-  space: {
-    width: 16,
   },
   frontPageSection: {
     marginTop: 16,

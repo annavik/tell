@@ -1,3 +1,4 @@
+import { buttonStyles } from '../config/styles'
 import { colors } from '../config/colors'
 import { pickImage } from '../utils/imageHandler'
 import React from 'react'
@@ -51,15 +52,22 @@ export class EditImage extends React.Component {
       <View style={styles.buttonContainer}>
         <TellButton
           title="Ta bort"
-          size="tiny"
-          backgroundColor={colors.white}
-          color={colors.black}
+          buttonStyles={{
+            ...buttonStyles.buttonTiny,
+            backgroundColor: 'transparent',
+            marginRight: 8,
+          }}
+          labelStyles={{
+            color: colors.black,
+          }}
           onPress={this.onRemoveImagePress.bind(this)}
         />
-        <View style={styles.space} />
         <TellButton
           title="Välj ny"
-          size="tiny"
+          buttonStyles={{
+            ...buttonStyles.buttonTiny,
+            marginLeft: 8,
+          }}
           onPress={this.onPickImagePress.bind(this)}
         />
       </View>
@@ -111,8 +119,5 @@ const styles = StyleSheet.create({
     padding: 32,
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  space: {
-    width: 16,
   },
 })

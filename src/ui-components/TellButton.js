@@ -7,89 +7,21 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 export class TellButton extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    buttonStyles: PropTypes.object,
+    labelStyles: PropTypes.object,
     onPress: PropTypes.func.isRequired,
-    backgroundColor: PropTypes.string,
-    color: PropTypes.string,
-    theme: PropTypes.string,
-    size: PropTypes.string,
-  }
-
-  getButtonStyles() {
-    const { backgroundColor, color, theme, size } = this.props
-
-    var buttonStyles = styles.button
-
-    switch (theme) {
-      case 'border':
-        buttonStyles = {
-          ...buttonStyles,
-          ...styles.buttonBorder,
-        }
-        break
-      case 'solid':
-      default:
-        buttonStyles = {
-          ...buttonStyles,
-          ...styles.buttonSolid,
-        }
-        break
-    }
-
-    switch (size) {
-      case 'tiny':
-        buttonStyles = {
-          ...buttonStyles,
-          ...styles.buttonTiny,
-        }
-        break
-      case 'medium':
-        buttonStyles = {
-          ...buttonStyles,
-          ...styles.buttonMedium,
-        }
-        break
-      case 'large':
-        buttonStyles = {
-          ...buttonStyles,
-          ...styles.buttonLarge,
-        }
-        break
-      case 'small':
-      default:
-        buttonStyles = {
-          ...buttonStyles,
-          ...styles.buttonSmall,
-        }
-        break
-    }
-
-    if (backgroundColor) {
-      buttonStyles = { ...buttonStyles, backgroundColor }
-    }
-
-    if (color) {
-      buttonStyles = { ...buttonStyles, borderColor: color }
-    }
-
-    return buttonStyles
-  }
-
-  getLabelStyles() {
-    const { color } = this.props
-
-    return color ? { ...styles.label, color } : styles.label
   }
 
   render() {
-    const { title, onPress } = this.props
+    const { title, buttonStyles, labelStyles, onPress } = this.props
 
     return (
       <TouchableOpacity
-        style={this.getButtonStyles()}
+        style={{ ...styles.button, ...buttonStyles }}
         onPress={onPress}
         activeOpacity={0.8}
       >
-        <Text style={this.getLabelStyles()}>{title}</Text>
+        <Text style={{ ...styles.label, ...labelStyles }}>{title}</Text>
       </TouchableOpacity>
     )
   }
@@ -97,37 +29,16 @@ export class TellButton extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: 32,
     paddingLeft: 32,
-  },
-  buttonSolid: {
+    height: 44,
+    borderRadius: 4,
     backgroundColor: colors.primary,
-  },
-  buttonBorder: {
+    borderWidth: 0,
     borderColor: colors.white,
-    borderWidth: 1,
-  },
-  buttonTiny: {
-    height: 32,
-    borderRadius: 16,
-    paddingRight: 16,
-    paddingLeft: 16,
-  },
-  buttonSmall: {
-    height: 44,
-    borderRadius: 22,
-  },
-  buttonMedium: {
-    width: '100%',
-    height: 44,
-    borderRadius: 4,
-  },
-  buttonLarge: {
-    width: '100%',
-    height: 52,
-    borderRadius: 4,
   },
   label: {
     ...typography.labelMedium,

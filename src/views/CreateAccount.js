@@ -86,11 +86,7 @@ export class CreateAccount extends React.Component {
               ref={input => (this.passwordRepeatInput = input)}
             />
           </View>
-          <TellButton
-            title="Skapa konto"
-            size="medium"
-            onPress={() => this.signUp()}
-          />
+          <TellButton title="Skapa konto" onPress={() => this.signUp()} />
         </View>
       </View>
     )

@@ -1,3 +1,4 @@
+import { buttonStyles } from '../../config/styles'
 import { colors } from '../../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -35,31 +36,46 @@ export class Home extends React.Component {
         <View style={styles.main}>
           <TellButton
             title="Mina böcker"
-            size="large"
+            buttonStyles={{
+              ...buttonStyles.buttonLarge,
+              marginBottom: 16,
+            }}
             onPress={() => this.props.navigation.navigate('MyBooks')}
           />
-          <View style={styles.space} />
           <TellButton
             title="Bibliotek"
-            backgroundColor={colors.white}
-            color={colors.black}
-            size="large"
+            buttonStyles={{
+              ...buttonStyles.buttonLarge,
+              backgroundColor: colors.white,
+              marginBottom: 16,
+            }}
+            labelStyles={{
+              color: colors.white
+            }}
             onPress={() => {}}
           />
-          <View style={styles.space} />
           <TellButton
             title="Profil"
-            backgroundColor={colors.white}
-            color={colors.black}
-            size="large"
+            buttonStyles={{
+              ...buttonStyles.buttonLarge,
+              backgroundColor: colors.white,
+              marginBottom: 16,
+            }}
+            labelStyles={{
+              color: colors.white
+            }}
             onPress={() => {}}
           />
-          <View style={styles.space} />
           <TellButton
             title="Logga ut"
-            backgroundColor={colors.white}
-            color={colors.black}
-            size="large"
+            buttonStyles={{
+              ...buttonStyles.buttonLarge,
+              backgroundColor: colors.white,
+              marginBottom: 16,
+            }}
+            labelStyles={{
+              color: colors.white
+            }}
             onPress={() => this.signOut()}
           />
         </View>
@@ -86,8 +102,5 @@ const styles = StyleSheet.create({
   bottom: {
     padding: 32,
     alignItems: 'center',
-  },
-  space: {
-    height: 16,
   },
 })

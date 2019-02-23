@@ -37,7 +37,7 @@ export class EditText extends React.Component {
             }}
           />
         </View>
-        <TellButton title="Spara text" size="medium" onPress={() => {}} />
+        <TellButton title="Spara text" onPress={() => {}} />
       </View>
     )
   }

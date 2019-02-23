@@ -4,8 +4,8 @@ import React from 'react'
 import { showAlert } from '../utils/showAlert'
 import { signIn } from '../utils/auth'
 import { TellButton } from '../ui-components/TellButton'
-import { textInputStyles } from '../config/styles'
 import { typography } from '../config/typography'
+import { buttonStyles, textInputStyles } from '../config/styles'
 import {
   Image,
   ImageBackground,
@@ -88,7 +88,7 @@ export class Login extends React.Component {
 
               <TellButton
                 title="Logga in"
-                size="large"
+                buttonStyles={buttonStyles.buttonLarge}
                 onPress={() => this.signIn()}
               />
             </View>
@@ -98,7 +98,14 @@ export class Login extends React.Component {
           <Text style={styles.label}>Ny användare?</Text>
           <TellButton
             title="Registrera dig gratis"
-            theme="border"
+            buttonStyles={{
+              ...buttonStyles.buttonSmall,
+              borderWidth: 1,
+              backgroundColor: 'transparent',
+            }}
+            labelStyles={{
+              color: colors.white,
+            }}
             onPress={() => this.props.navigation.navigate('CreateAccount')}
           />
         </View>

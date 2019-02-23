@@ -1,3 +1,4 @@
+import { buttonStyles } from '../config/styles'
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -21,15 +22,24 @@ export class MyBooks extends React.Component {
           <View style={styles.buttonContainer}>
             <TellButton
               title="Redigera lista"
-              theme="border"
+              buttonStyles={{
+                ...buttonStyles.buttonTiny,
+                borderWidth: 1,
+                backgroundColor: 'transparent',
+                marginRight: 8,
+              }}
               onPress={() => {}}
             />
           </View>
-          <View style={styles.space} />
           <View style={styles.buttonContainer}>
             <TellButton
               title="Ny bok"
-              theme="border"
+              buttonStyles={{
+                ...buttonStyles.buttonTiny,
+                borderWidth: 1,
+                backgroundColor: 'transparent',
+                marginLeft: 8,
+              }}
               onPress={() => this.props.navigation.navigate('EditBook')}
             />
           </View>
@@ -59,9 +69,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-  },
-  space: {
-    width: 16,
   },
   placeholderContent: {
     margin: 64,
