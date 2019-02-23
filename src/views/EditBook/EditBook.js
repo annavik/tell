@@ -5,11 +5,11 @@ import { PageListView } from '../../ui-components/PageListView'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Section } from './Section'
+import { textInputStyles } from '../../config/styles'
 import { TellButton } from '../../ui-components/TellButton'
 import { TellImagePicker } from '../../ui-components/TellImagePicker'
-import { TellTextInput } from '../../ui-components/TellTextInput'
 import { typography } from '../../config/typography'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const views = [
   {
@@ -75,8 +75,18 @@ export class EditBook extends React.Component {
         <ScrollView>
           <Section title="Framsida">
             <View style={styles.frontPageSection}>
-              <TellTextInput theme="border" label="Titel" />
-              <TellTextInput theme="border" label="Författare" />
+              <Text style={textInputStyles.textInputLabel}>Titel</Text>
+              <TextInput
+                style={textInputStyles.textInputBorder}
+                placeholderTextColor={colors.darkGrey}
+                onChangeText={() => {}}
+              />
+              <Text style={textInputStyles.textInputLabel}>Författare</Text>
+              <TextInput
+                style={textInputStyles.textInputBorder}
+                placeholderTextColor={colors.darkGrey}
+                onChangeText={() => {}}
+              />
               <TellImagePicker
                 image={frontPageImage}
                 width={120}

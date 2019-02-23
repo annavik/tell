@@ -1,9 +1,9 @@
 import { colors } from '../config/colors'
 import React from 'react'
-import { sharedStyles } from '../config/sharedStyles'
 import { showAlert } from '../utils/showAlert'
 import { signUp } from '../utils/auth'
 import { TellButton } from '../ui-components/TellButton'
+import { textInputStyles } from '../config/styles'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 export class CreateAccount extends React.Component {
@@ -53,33 +53,33 @@ export class CreateAccount extends React.Component {
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.inputFields}>
-            <Text style={sharedStyles.textInputLabel}>E-post</Text>
+            <Text style={textInputStyles.textInputLabel}>E-post</Text>
             <TextInput
               returnKeyType="next"
               keyboardType="email-address"
               autoCapitalize="none"
-              style={sharedStyles.textInputBorder}
+              style={textInputStyles.textInputBorder}
               placeholderTextColor={colors.darkGrey}
               onChangeText={text => this.setState({ email: text })}
               onSubmitEditing={() => this.passwordInput.focus()}
             />
 
-            <Text style={sharedStyles.textInputLabel}>Lösenord</Text>
+            <Text style={textInputStyles.textInputLabel}>Lösenord</Text>
             <TextInput
               returnKeyType="next"
               secureTextEntry
-              style={sharedStyles.textInputBorder}
+              style={textInputStyles.textInputBorder}
               placeholderTextColor={colors.darkGrey}
               onChangeText={text => this.setState({ password: text })}
               onSubmitEditing={() => this.passwordRepeatInput.focus()}
               ref={input => (this.passwordInput = input)}
             />
 
-            <Text style={sharedStyles.textInputLabel}>Upprepa lösenord</Text>
+            <Text style={textInputStyles.textInputLabel}>Upprepa lösenord</Text>
             <TextInput
               returnKeyType="go"
               secureTextEntry
-              style={sharedStyles.textInputBorder}
+              style={textInputStyles.textInputBorder}
               placeholderTextColor={colors.darkGrey}
               onChangeText={text => this.setState({ passwordRepeat: text })}
               onSubmitEditing={() => this.signUp()}

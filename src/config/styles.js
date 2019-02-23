@@ -2,7 +2,7 @@ import { colors } from './colors'
 import { StyleSheet } from 'react-native'
 import { typography } from './typography'
 
-export const sharedStyles = StyleSheet.create({
+export const textInputStyles = StyleSheet.create({
   textInputPlain: {
     width: '100%',
     height: 52,

@@ -1,10 +1,10 @@
 import { colors } from '../config/colors'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { sharedStyles } from '../config/sharedStyles'
 import { showAlert } from '../utils/showAlert'
 import { signIn } from '../utils/auth'
 import { TellButton } from '../ui-components/TellButton'
+import { textInputStyles } from '../config/styles'
 import { typography } from '../config/typography'
 import {
   Image,
@@ -69,7 +69,7 @@ export class Login extends React.Component {
                 returnKeyType="next"
                 keyboardType="email-address"
                 autoCapitalize="none"
-                style={sharedStyles.textInputPlain}
+                style={textInputStyles.textInputPlain}
                 placeholderTextColor={colors.darkGrey}
                 onChangeText={text => this.setState({ email: text })}
                 onSubmitEditing={() => this.passwordInput.focus()}
@@ -79,7 +79,7 @@ export class Login extends React.Component {
                 placeholder="Lösenord"
                 returnKeyType="go"
                 secureTextEntry
-                style={sharedStyles.textInputPlain}
+                style={textInputStyles.textInputPlain}
                 placeholderTextColor={colors.darkGrey}
                 onChangeText={text => this.setState({ password: text })}
                 onSubmitEditing={() => this.signIn()}
