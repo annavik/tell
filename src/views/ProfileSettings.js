@@ -1,4 +1,5 @@
 import { colors } from '../config/colors'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { showAlert } from '../utils/showAlert'
 import { TellButton } from '../ui-components/TellButton'
@@ -9,6 +10,10 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 export class ProfileSettings extends React.Component {
   static navigationOptions = {
     title: 'Profil',
+  }
+
+  static propTypes = {
+    navigation: PropTypes.object,
   }
 
   state = {
@@ -34,6 +39,7 @@ export class ProfileSettings extends React.Component {
 
     try {
       await setUserProfile(firstName, lastName)
+      this.props.navigation.goBack()
     } catch (error) {
       showAlert('Något gick fel.', 'Profil kunde inte sparas.')
     }
