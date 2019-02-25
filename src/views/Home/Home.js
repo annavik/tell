@@ -63,7 +63,7 @@ export class Home extends React.Component {
             labelStyle={{
               color: colors.black
             }}
-            onPress={() => {}}
+            onPress={() => this.props.navigation.navigate('ProfileSettings')}
           />
           <TellButton
             title="Logga ut"
