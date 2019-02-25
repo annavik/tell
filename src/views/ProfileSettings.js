@@ -58,7 +58,7 @@ export class ProfileSettings extends React.Component {
               onChangeText={text => this.setState({ firstName: text })}
             />
 
-            <Text style={textInputStyles.textInputLabel}>Efternam</Text>
+            <Text style={textInputStyles.textInputLabel}>Efternamn</Text>
             <TextInput
               style={textInputStyles.textInputBorder}
               placeholderTextColor={colors.darkGrey}
