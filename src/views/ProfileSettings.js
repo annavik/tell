@@ -4,7 +4,7 @@ import React from 'react'
 import { showAlert } from '../utils/showAlert'
 import { TellButton } from '../ui-components/TellButton'
 import { textInputStyles } from '../config/styles'
-import { getUserProfile, setUserProfile } from '../utils/db'
+import { getUserProfile, setUserProfile } from '../utils/db/userProfile'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 export class ProfileSettings extends React.Component {

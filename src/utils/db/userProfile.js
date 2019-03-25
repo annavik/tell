@@ -1,10 +1,5 @@
-import firebase from './firebase'
-
-const collections = {
-  USERS: 'users/',
-}
-
-const getUserId = () => firebase.auth().currentUser.uid
+import firebase from '../firebase'
+import { collections, getUserId } from './core'
 
 export const getUserProfile = (onSuccess, onError) => {
   const userId = getUserId()
@@ -17,7 +12,7 @@ export const getUserProfile = (onSuccess, onError) => {
       .once(
         'value',
         snapshot => {
-          const data = snapshot.val()
+          const data = snapshot.val() || { firstName: '', lastName: '' }
           onSuccess({ firstName: data.firstName, lastName: data.lastName })
         },
         () => {
@@ -57,7 +52,7 @@ export const setUserProfileObserver = (onSet, onError) => {
       .on(
         'value',
         snapshot => {
-          const data = snapshot.val()
+          const data = snapshot.val() || { firstName: '', lastName: '' }
           onSet({ firstName: data.firstName, lastName: data.lastName })
         },
         () => {

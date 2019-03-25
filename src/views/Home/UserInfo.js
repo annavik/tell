@@ -1,6 +1,6 @@
 import { colors } from '../../config/colors'
 import React from 'react'
-import { setUserProfileObserver } from '../../utils/db'
+import { setUserProfileObserver } from '../../utils/db/userProfile'
 import { showAlert } from '../../utils/showAlert'
 import { typography } from '../../config/typography'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
@@ -12,18 +12,28 @@ export class UserInfo extends React.Component {
   }
 
   componentDidMount() {
+    this.alive = true
+
     const onSet = userProfile => {
-      this.setState({
-        firstName: userProfile.firstName,
-        lastName: userProfile.lastName,
-      })
+      if (this.alive) {
+        this.setState({
+          firstName: userProfile.firstName,
+          lastName: userProfile.lastName,
+        })
+      }
     }
 
     const onError = () => {
-      showAlert('Något gick fel.', 'Profil kunde inte hämtas.')
+      if (this.alive) {
+        showAlert('Något gick fel.', 'Profil kunde inte hämtas.')
+      }
     }
 
     setUserProfileObserver(onSet, onError)
+  }
+
+  componentWillUnmount() {
+    this.alive = false
   }
 
   getUserName = () => {

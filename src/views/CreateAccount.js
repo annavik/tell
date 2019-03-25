@@ -40,7 +40,7 @@ export class CreateAccount extends React.Component {
 
     try {
       await signUp(email, password)
-    } catch {
+    } catch (error) {
       showAlert(
         'Kontot kunde inte skapas.',
         'Kontrollera att du har använt en giltig e-postadress.'
@@ -77,12 +77,11 @@ export class CreateAccount extends React.Component {
 
             <Text style={textInputStyles.textInputLabel}>Upprepa lösenord</Text>
             <TextInput
-              returnKeyType="go"
+              returnKeyType="done"
               secureTextEntry
               style={textInputStyles.textInputBorder}
               placeholderTextColor={colors.darkGrey}
               onChangeText={text => this.setState({ passwordRepeat: text })}
-              onSubmitEditing={() => this.signUp()}
               ref={input => (this.passwordRepeatInput = input)}
             />
           </View>
