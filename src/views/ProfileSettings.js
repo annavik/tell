@@ -21,17 +21,19 @@ export class ProfileSettings extends React.Component {
     lastName: '',
   }
 
-  async componentDidMount() {
-    try {
-      await getUserProfile(userProfile => {
-        this.setState({
-          firstName: userProfile.firstName,
-          lastName: userProfile.lastName,
-        })
+  componentDidMount() {
+    const onSuccess = userProfile => {
+      this.setState({
+        firstName: userProfile.firstName,
+        lastName: userProfile.lastName,
       })
-    } catch (error) {
+    }
+
+    const onError = () => {
       showAlert('Något gick fel.', 'Profil kunde inte hämtas.')
     }
+
+    getUserProfile(onSuccess, onError)
   }
 
   async save() {

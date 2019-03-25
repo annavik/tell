@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { showAlert } from '../../utils/showAlert'
 import { signOut } from '../../utils/auth'
-import { buttonSizes, TellButton } from '../../ui-components/TellButton'
 import { UserInfo } from './UserInfo'
+import { buttonSizes, TellButton } from '../../ui-components/TellButton'
 import { Image, ImageBackground, StyleSheet, View } from 'react-native'
 
 const bg = require('../../../assets/images/bg_home.jpg')
@@ -49,7 +49,7 @@ export class Home extends React.Component {
               marginBottom: 16,
             }}
             labelStyle={{
-              color: colors.black
+              color: colors.black,
             }}
             onPress={() => {}}
           />
@@ -61,7 +61,7 @@ export class Home extends React.Component {
               marginBottom: 16,
             }}
             labelStyle={{
-              color: colors.black
+              color: colors.black,
             }}
             onPress={() => this.props.navigation.navigate('ProfileSettings')}
           />
@@ -73,7 +73,7 @@ export class Home extends React.Component {
               marginBottom: 16,
             }}
             labelStyle={{
-              color: colors.black
+              color: colors.black,
             }}
             onPress={() => this.signOut()}
           />
@@ -88,7 +88,7 @@ export class Home extends React.Component {
 
 const styles = StyleSheet.create({
   background: {
-   flex: 1
+    flex: 1,
   },
   top: {
     backgroundColor: colors.primary,

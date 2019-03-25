@@ -1,10 +1,48 @@
 import { colors } from '../../config/colors'
 import React from 'react'
+import { setUserProfileObserver } from '../../utils/db'
+import { showAlert } from '../../utils/showAlert'
 import { typography } from '../../config/typography'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
 export class UserInfo extends React.Component {
+  state = {
+    firstName: '',
+    lastName: '',
+  }
+
+  componentDidMount() {
+    const onSet = userProfile => {
+      this.setState({
+        firstName: userProfile.firstName,
+        lastName: userProfile.lastName,
+      })
+    }
+
+    const onError = () => {
+      showAlert('Något gick fel.', 'Profil kunde inte hämtas.')
+    }
+
+    setUserProfileObserver(onSet, onError)
+  }
+
+  getUserName = () => {
+    const { firstName, lastName } = this.state
+
+    if (firstName.length > 0) {
+      if (lastName.length > 0) {
+        return `${firstName} ${lastName[0]}.`
+      }
+
+      return firstName
+    }
+
+    return 'Anonym'
+  }
+
   render() {
+    const name = this.getUserName()
+
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.stats}>
@@ -17,7 +55,7 @@ export class UserInfo extends React.Component {
           <View style={styles.placeholder}>
             <Text style={styles.placeholderLetter}>A</Text>
           </View>
-          <Text style={styles.name}>Anna V.</Text>
+          <Text style={styles.name}>{name}</Text>
         </View>
         <View style={styles.stats}>
           <View style={styles.statsContent}>

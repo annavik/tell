@@ -5,10 +5,14 @@ import { PageListView } from '../../ui-components/PageListView'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Section } from './Section'
-import { textInputStyles } from '../../config/styles'
 import { TellImagePicker } from '../../ui-components/TellImagePicker'
+import { textInputStyles } from '../../config/styles'
 import { typography } from '../../config/typography'
-import { buttonSizes, buttonThemes, TellButton } from '../../ui-components/TellButton'
+import {
+  buttonSizes,
+  buttonThemes,
+  TellButton,
+} from '../../ui-components/TellButton'
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const views = [

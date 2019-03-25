@@ -5,8 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "format": "eslint --fix App.js src/**/*.js --quiet && prettier --write App.js src/**/*.js --loglevel error",
-    "format:check": "eslint App.js src/**/*.js && prettier --check App.js src/**/*.js"
+    "format": "eslint --fix App.js \"src/**/*.js\" --quiet && prettier --write App.js \"src/**/*.js\" --loglevel error",
+    "format:check": "eslint App.js \"src/**/*.js\" && prettier --check App.js \"src/**/*.js\""
   },
   "dependencies": {
     "expo": "^32.0.0",

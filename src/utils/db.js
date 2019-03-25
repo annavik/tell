@@ -6,7 +6,7 @@ const collections = {
 
 const getUserId = () => firebase.auth().currentUser.uid
 
-export const getUserProfile = onSuccess => {
+export const getUserProfile = (onSuccess, onError) => {
   const userId = getUserId()
 
   if (userId) {
@@ -21,11 +21,11 @@ export const getUserProfile = onSuccess => {
           onSuccess({ firstName: data.firstName, lastName: data.lastName })
         },
         () => {
-          throw Error('Could not load profile.')
+          onError(new Error('Could not load profile.'))
         }
       )
   } else {
-    throw Error('User not authenticated.')
+    onError(new Error('User not authenticated.'))
   }
 }
 
@@ -43,5 +43,28 @@ export const setUserProfile = (firstName, lastName) => {
       })
   } else {
     throw Error('User not authenticated.')
+  }
+}
+
+export const setUserProfileObserver = (onSet, onError) => {
+  const userId = getUserId()
+
+  if (userId) {
+    firebase
+      .database()
+      .ref(collections.USERS)
+      .child(userId)
+      .on(
+        'value',
+        snapshot => {
+          const data = snapshot.val()
+          onSet({ firstName: data.firstName, lastName: data.lastName })
+        },
+        () => {
+          onError(new Error('Could not load profile.'))
+        }
+      )
+  } else {
+    onError(new Error('User not authenticated.'))
   }
 }
